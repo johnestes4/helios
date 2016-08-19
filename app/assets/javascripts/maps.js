@@ -1,19 +1,16 @@
-console.log("maps.js has been called")
-
-// Include angular dependencies
 //= require angular
 //= require angular-resource
 
 "use strict";
+console.log("maps.js has been called")
 
 (function() {
-    console.log("IIFE in maps.js has been called");
     angular
         .module("heatMap", [
-            "ngResource"
+
         ])
         .controller("map_controller", [
-            "$resource",
+
             MapController
         ]);
 
