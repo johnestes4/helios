@@ -17,10 +17,9 @@ ActiveRecord::Schema.define(version: 20160819172454) do
 
   create_table "tweets", force: :cascade do |t|
     t.text     "status"
-    t.integer  "coordinates_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["coordinates_id"], name: "index_tweets_on_coordinates_id", using: :btree
+    t.text     "coordinates", default: [],              array: true
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
 end

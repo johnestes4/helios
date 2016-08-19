@@ -10,12 +10,12 @@ namespace :twitter do
         end
         puts 'I authenticated'
         TweetStream::Client.new.filter(:follow => [52422878, 14955353, 88703900, 21870081, 110422282, 17483462, 133448051, 17049258, 211228546, 375796206]) do |status|
-            tweet=Tweet.new(:status => status.text, :user_name => status.user.screen_name)
+            puts status
+            binding.pry
+            tweet=Tweet.new(:status => status.text, :coordinates =>status.coordinates)
             puts 'a tweet was received'
-            if tweet.status !~ /^RT/
-                tweet.save
-                puts 'I saved a file'
-            end
+            tweet.save
+            puts 'I saved a file'
         end
     end
 end
