@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+$i = 0
+$num = 1000
+while $i < $num  do
+    Tweet.create(coordinates: [Faker::Address.latitude, Faker::Address.longitude], hashtag:['#'+Faker::Hacker.abbreviation, '#'+Faker::Hipster.word])
+   $i +=1
+end

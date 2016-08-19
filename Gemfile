@@ -37,6 +37,8 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 #jquery-rails
 gem 'jquery-rails', '~> 4.1', '>= 4.1.1'
+#faker data
+gem 'faker'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
