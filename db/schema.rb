@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 20160819172454) do
   enable_extension "plpgsql"
 
   create_table "tweets", force: :cascade do |t|
-    t.text     "status"
     t.text     "coordinates", default: [],              array: true
+    t.text     "hashtag",     default: [],              array: true
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
