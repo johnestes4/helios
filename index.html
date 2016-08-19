@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html data-ng-app="maptime" data-ng-controller="mainController">
+  <head>
+    <title>Angular</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular-resource.min.js"></script>
+
+    <script src="js/resource/angular-simple-logger.js"></script>
+    <script src="js/resource/lodash.js"></script>
+    <script src="js/resource/angular-google-maps.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/maps/index.controller.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+  </head>
+  <body>
+    <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+  </body>
+</html>
