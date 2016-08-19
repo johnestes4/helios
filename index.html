@@ -15,6 +15,15 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css">
   </head>
   <body>
-    <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+    <!-- <div id="floating-panel">
+      <button onclick="map.toggleHeatmap()">Toggle Heatmap</button>
+      <button onclick="map.changeGradient()">Change gradient</button>
+      <button onclick="map.changeRadius()">Change radius</button>
+      <button onclick="map.changeOpacity()">Change opacity</button>
+    </div> -->
+
+    <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+        <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="map.showHeat" onCreated="map.heatLayerCallback"></ui-gmap-layer>
+    </ui-gmap-google-map>
   </body>
 </html>

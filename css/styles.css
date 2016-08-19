@@ -11,3 +11,7 @@ html, body {
     right: 0;
     left: 0;
 }
+
+#floating-panel {
+  z-index: 999;
+}
