@@ -1,19 +1,21 @@
 //= require angular
 //= require angular-resource
-
 "use strict";
 
 (function(){
-    console.log('Whats up')
+    console.log('fireaway')
     angular
     .module("heatMap", [
         "ngResource"
     ])
-    .controller("mapsController", [
+    .controller("maps_controller", [
         "$resource",
-        mapsController
+        MapsController
     ]);
-    function mapsController($resource){
-        console.log('Where the bitches at')
+    function MapsController($resource){
+        var vm = this;
+        vm.total_value = function(){
+            return 5+5
+        }
     }
 })();
