@@ -12,7 +12,12 @@
         "ngResource",
         'uiGmapgoogle-maps'
     ])
-    .controller("maps_controller", function($scope, uiGmapGoogleMapApi) {
+    .controller("maps_controller", function($scope, uiGmapGoogleMapApi, $resource) {
+      var vm = this;
+      var Map = $resource("/maps.json", {}, {
+        update: {method: "PUT"}
+      });
+      vm.data = Map.query();
       $scope.points = [
       ];
       function getPoints() {
@@ -36,11 +41,14 @@
         heatLayer.setData(pointArray);
       };
 
-      function updateHeat(newLat, newLong) {
+      function updateHeat() {
         var points = getPoints();
-        $scope.points.push(new google.maps.LatLng(newLat, newLong));
+        for (var i = 0; i < vm.data.length; i++) {
+          $scope.points.push(new google.maps.LatLng(vm.data[0].coordinates[0], vm.data[0].coordinates[1]));
+        }
         var pointArray = new google.maps.MVCArray(points);
       };
+
       $scope.map = {
                   center: {
                   latitude: 38.907240,
