@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html data-ng-app="maptime">
+  <head>
+    <title>Angular</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular-resource.min.js"></script>
+
+    <script src="js/resource/angular-simple-logger.js"></script>
+    <script src="js/resource/lodash.js"></script>
+    <script src="js/resource/angular-google-maps.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/maps/index.controller.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+  </head>
+  <body data-ng-controller="mainController">
+
+    <div id="floating-panel">
+      <button data-ng-click="map.toggleHeat()">Toggle Heatmap</button>
+      <button data-ng-click="mainController.updateHeatLayer(38.903365, -77.029681)">Change gradient</button>
+      <button data-ng-click="map.changeRadius">Change radius</button>
+      <button data-ng-click="map.changeOpacity">Change opacity</button>
+    </div>
+    <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+        <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="map.showHeat" onCreated="map.heatLayerCallback"></ui-gmap-layer>
+    </ui-gmap-google-map>
+  </body>
+</html>

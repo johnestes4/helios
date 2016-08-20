@@ -1,10 +1,15 @@
 <%=stylesheet_link_tag "maps", property: "stylesheet"%>
 <%=javascript_include_tag "maps"%>
 <div class="container" data-ng-app="heatMap">
-    <header class="jumbotron">
-        <h1 class='hello'>Maps App</h1>
-    </header>
-    <main data-ng-controller="maps_controller as vm">
-        <h2>Total Value: ${{vm.total_value()}}</h2>
-    </main>
+  <main data-ng-controller="maps_controller as vm">
+    <div id="floating-panel">
+      <button data-ng-click="map.toggleHeat()">Toggle Heatmap</button>
+      <button data-ng-click="map.updateHeatLayer(38.903365, -77.029681)">test new coordinate</button>
+      <!-- <button data-ng-click="map.heatLayerCallback">Change radius</button>
+      <button data-ng-click="map.changeOpacity">Change opacity</button> -->
+    </div>
+    <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+        <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="map.showHeat" onCreated="map.heatLayerCallback" id="layerInUse"></ui-gmap-layer>
+    </ui-gmap-google-map>
+  </main>
 </div>
