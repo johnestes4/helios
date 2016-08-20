@@ -75,4 +75,9 @@
           libraries: 'weather,geometry,visualization'
       });
     });
+
+    function getAllPoints() {
+        var latLongObjArray = []
+        Map
+    }
 })();
