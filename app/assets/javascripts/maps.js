@@ -13,34 +13,33 @@
         'uiGmapgoogle-maps'
     ])
     .controller("maps_controller", function($scope, uiGmapGoogleMapApi) {
+      $scope.points = [
+      ];
       function getPoints() {
-        var points = [
-          new google.maps.LatLng(38.902551, -77.035368),
-          new google.maps.LatLng(38.902745, -77.034586),
-          new google.maps.LatLng(38.902842, -77.033688),
-          new google.maps.LatLng(38.902919, -77.032815),
-          new google.maps.LatLng(38.902992, -77.032112),
-          new google.maps.LatLng(38.903100, -77.031461),
-          new google.maps.LatLng(38.903206, -77.030829),
-          new google.maps.LatLng(38.903273, -77.030324),
-          new google.maps.LatLng(38.903316, -77.030023),
-          new google.maps.LatLng(38.903357, -77.029794),
-          new google.maps.LatLng(38.903371, -77.029687)
-        ];
-        return points;
+        return $scope.points;
       };
+      function dummyPoints() {
+        $scope.points.push(new google.maps.LatLng(38.902551, -77.035368));
+        $scope.points.push(new google.maps.LatLng(38.902745, -77.034586));
+        $scope.points.push(new google.maps.LatLng(38.902842, -77.033688));
+        $scope.points.push(new google.maps.LatLng(38.902919, -77.032815));
+        $scope.points.push(new google.maps.LatLng(38.902992, -77.032112));
+        $scope.points.push(new google.maps.LatLng(38.903100, -77.031461));
+        $scope.points.push(new google.maps.LatLng(38.903206, -77.030829));
+        $scope.points.push(new google.maps.LatLng(38.903273, -77.030324));
+        $scope.points.push(new google.maps.LatLng(38.903316, -77.030023));
+        $scope.points.push(new google.maps.LatLng(38.903357, -77.029794))
+      }
 
       function createHeatLayer(heatLayer) {
-        var pointArray = new google.maps.MVCArray(getPoints());
+        var pointArray = new google.maps.MVCArray($scope.points);
         heatLayer.setData(pointArray);
       };
 
       function updateHeat(newLat, newLong) {
         var points = getPoints();
-        points.push(new google.maps.LatLng(newLat, newLong));
+        $scope.points.push(new google.maps.LatLng(newLat, newLong));
         var pointArray = new google.maps.MVCArray(points);
-        console.log(newLat)
-        console.log(newLong)
       };
       $scope.map = {
                   center: {
@@ -50,6 +49,8 @@
                   showHeat: true,
                   zoom: 14,
                   heatLayerCallback: function (layer) {
+                    dummyPoints();
+                    $scope.layerInUse = layer;
                     //set the heat layers backend data
                     var heatLayer = new createHeatLayer(layer);
                   },
@@ -61,7 +62,8 @@
                   },
                   updateHeatLayer: function(newLat, newLong) {
                     updateHeat(newLat, newLong);
-                    var heatLayer = new createHeatLayer(this);
+                    var layer = document.getElementById("layerInUse");
+                    var heatLayer = new createHeatLayer($scope.layerInUse);
                   }
               };
       uiGmapGoogleMapApi.then(function(maps) {

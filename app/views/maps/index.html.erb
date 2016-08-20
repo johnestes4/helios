@@ -4,9 +4,7 @@
   <main data-ng-controller="maps_controller as vm">
     <div id="floating-panel">
       <button data-ng-click="map.toggleHeat()">Toggle Heatmap</button>
-      <button data-ng-click="map.updateHeatLayer(38.903365, -77.029681)">test new coordinate</button>
-      <!-- <button data-ng-click="map.heatLayerCallback">Change radius</button>
-      <button data-ng-click="map.changeOpacity">Change opacity</button> -->
+      <button data-ng-click="map.updateHeatLayer(38.903371, -77.029687)">test new coordinate</button>
     </div>
     <ui-gmap-google-map center='map.center' zoom='map.zoom'>
         <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="map.showHeat" onCreated="map.heatLayerCallback" id="layerInUse"></ui-gmap-layer>
