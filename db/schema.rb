@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160819172454) do
+ActiveRecord::Schema.define(version: 20160820192824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "tweets", force: :cascade do |t|
+  create_table "maps", force: :cascade do |t|
     t.text     "coordinates", default: [],              array: true
     t.text     "hashtag",     default: [],              array: true
     t.datetime "created_at",               null: false
