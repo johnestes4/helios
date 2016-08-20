@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 $i = 0
-$num = 1000
+$num = 5
 while $i < $num  do
-    Tweet.create(coordinates: [Faker::Address.latitude, Faker::Address.longitude], hashtag:['#'+Faker::Hacker.abbreviation, '#'+Faker::Hipster.word])
+    Map.create(coordinates: [Faker::Address.latitude, Faker::Address.longitude], hashtag:['#'+Faker::Hacker.abbreviation, '#'+Faker::Hipster.word])
    $i +=1
 end
