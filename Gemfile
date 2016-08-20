@@ -39,6 +39,8 @@ gem 'autoprefixer-rails'
 gem 'jquery-rails', '~> 4.1', '>= 4.1.1'
 #faker data
 gem 'faker'
+# it said we needed this for json files
+gem 'active_model_serializers', '~> 0.10.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -1,0 +1,10 @@
+<%=stylesheet_link_tag "maps", property: "stylesheet"%>
+<%=javascript_include_tag "maps"%>
+<div class="container" data-ng-app="heatMap">
+    <header class="jumbotron">
+        <h1 class='hello'>Maps App</h1>
+    </header>
+    <main data-ng-controller="maps_controller as vm">
+        <h2>Total Value: ${{vm.total_value()}}</h2>
+    </main>
+</div>
