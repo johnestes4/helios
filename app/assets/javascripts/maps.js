@@ -4,15 +4,16 @@
 "use strict";
 
 (function(){
+    console.log('Whats up')
     angular
     .module("heatMap", [
         "ngResource"
     ])
     .controller("mapsController", [
         "$resource",
-        InventoryControllerFunction
+        mapsController
     ]);
-    function InventoryControllerFunction($resource){
-        console.log('I am here Brotha!')
+    function mapsController($resource){
+        console.log('Where the bitches at')
     }
 })();
