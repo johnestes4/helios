@@ -18,11 +18,18 @@
         update: {method: "PUT"}
       });
       vm.data = Map.query();
+
+      // Initialize points. $scope.points will hold all of the google maps
+      //   latlng objects to be rendered on the map
       $scope.points = [
       ];
+
+      // Returns the full array of google maps latlng objects being displayed
       function getPoints() {
         return $scope.points;
       };
+
+
       function dummyPoints() {
         $scope.points.push(new google.maps.LatLng(38.902551, -77.035368));
         $scope.points.push(new google.maps.LatLng(38.902745, -77.034586));
@@ -102,9 +109,16 @@
          * Returns: A tweet array in the same form as above.
          */
 
+        // If the search term is an empty string, return the original array
+        if (search_term.trim() == "") {
+          return tweet_array
+        }
+
+        // If the search term is not empty
         var result_tweet_array = [];
         for (var i = 0; i < tweet_array.length; i++) {
-            if (tweet_array[i].hashtags.indexOf(search_term) != -1) {
+          // Check if the trimmed search term is in the hashtag array
+          if (tweet_array[i].hashtags.indexOf(search_term.trim()) != -1) {
                 result_tweet_array.push(tweet_array[i]);
             }
         }
