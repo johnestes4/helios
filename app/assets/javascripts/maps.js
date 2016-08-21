@@ -87,8 +87,19 @@
       });
     });
 
-    function getAllPoints() {
-        var latLongObjArray = []
-        Map
+
+    function filterTweets(tweet_array, search_term) {
+        // TODO Implement this with object oriented tweet objects
+        /* Takes in an array of tweets and a search term and returns
+         *   an array of tweets with hashtags that match the search.
+         * Parameters:
+         *   tweet_array: An array of dictionaries. Each dictionary contains
+         *                the following key value pairs:
+         *                  latitude: (string)
+         *                  longitude: (string)
+         *                  hashtags: (array of strings)
+         *   search_term: (string)*
+         */
+        
     }
 })();
