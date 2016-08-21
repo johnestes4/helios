@@ -99,7 +99,15 @@
          *                  longitude: (string)
          *                  hashtags: (array of strings)
          *   search_term: (string)*
+         * Returns: A tweet array in the same form as above.
          */
-        
+
+        var result_tweet_array = [];
+        for (var i = 0; i < tweet_array.length; i++) {
+            if (tweet_array[i].hashtags.indexOf(search_term) != -1) {
+                result_tweet_array.push(tweet_array[i]);
+            }
+        }
+        return result_tweet_array;
     }
 })();
