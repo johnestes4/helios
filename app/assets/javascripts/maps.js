@@ -26,6 +26,10 @@
       // vm.data holds all of the tweets in the database
       vm.data = Map.query();
 
+
+
+
+
       // Initialize points. $scope.points will hold all of the filtered google maps
       //   latlng objects to be rendered on the map.
       $scope.points = [
@@ -46,8 +50,8 @@
           // Poplulate the heat map if this is the first pass through. If not, the filter has been applied.
           if (firstLoad == true) {
               firstLoad = false;
-              for (var i = 0; i < vm.data.length; i++) {
-                  $scope.points.push(new google.maps.LatLng(vm.data[i].coordinates[0], vm.data[i].coordinates[1]));
+              for (var i = 0; i < $scope.allTweets.length; i++) {
+                  $scope.points.push(new google.maps.LatLng($scope.allTweets[i].coordinates[0], $scope.allTweets[i].coordinates[1]));
               }
           }
           
@@ -56,21 +60,6 @@
         heatLayer.setData(pointArray);
       };
 
-// // Now that this is integrated into createHeatLayer, we don't need the specific function anymore
-//       function updateHeat() {
-//         /* Adds
-//         * */
-//         console.log(vm.data);
-//         // Get all of the points currently being rendered
-//         var points = getPoints();
-//
-//         // Iterate through all tweets in the DB and push each one into the array being rendered
-//         // for (var i = 0; i < vm.data.length; i++) {
-//         //   $scope.points.push(new google.maps.LatLng(vm.data[i].coordinates[0], vm.data[i].coordinates[1]));
-//         // }
-//         // Nothing happens with this??
-//         var pointArray = new google.maps.MVCArray(points);
-//       };
 
       // Set up the google map
       $scope.map = {
@@ -133,7 +122,26 @@
                     populateFilteredTweets($scope, search_term);
                     var layer = document.getElementById("layerInUse");
                     var heatLayer = new createHeatLayer($scope.layerInUse);
-                },
+                  },
+
+                  serveHashCount: function () {
+                      // console.log("Sorting hashtags")
+                     // var hashtag_dict = countHashtags($scope.allTweets);
+                     //  var hash_count_tuples = [];
+                     //
+                     //  for (var key in hashtag_dict) hash_count_tuples.push([key, hashtag_dict[key]]);
+                     //
+                     //  hash_count_tuples.sort(function(a, b) {
+                     //      a = a[1];
+                     //      b = b[1];
+                     //
+                     //      return a < b ? -1 : (a > b ? 1 : 0);
+                     //  });
+
+                      // console.log(hash_count_tuples)
+                      $scope.allTweets = Map.query();
+                      console.log($scope.allTweets);
+                  },
                 takePhoto: function(){
                     html2canvas(document.main, {
                         onrendered: function(canvas) {
@@ -170,41 +178,9 @@
       });
     });
 
-    function oldFilterTweets(tweet_array, search_term) {
-        // TODO Implement this with object oriented tweet objects
-        /* Takes in an array of tweets and a search term and returns
-         *   an array of tweets with hashtags that match the search.
-         * Parameters:
-         *   tweet_array: An array of dictionaries. Each dictionary contains
-         *                the following key value pairs:
-         *                  latitude: (string)
-         *                  longitude: (string)
-         *                  hashtags: (array of strings)
-         *   search_term: (string)*
-         * Returns: A tweet array in the same form as above.
-         */
-
-
-        // If the search term is an empty string, return the original array
-        if (search_term == "") {
-          return tweet_array
-        }
-
-        // If the search term is not empty
-        var result_tweet_array = [];
-        for (var i = 0; i < tweet_array.length; i++) {
-          // Check if the trimmed search term is in the hashtag array
-          if (tweet_array[i].hashtags.indexOf(search_term) != -1) {
-                result_tweet_array.push(tweet_array[i]);
-            }
-        }
-        return result_tweet_array;
-    }
-
     function populateFilteredTweets(scope, search_term) {
-      //TODO On take in of data and/or population of mock data, ensure that all hashtags are toLowerCase
-      //TODO   then apply the same to the filter conditions. Otherwise, a query for '#xss' will return
-      //TODO   no results when '#XSS' is extant.
+
+      search_term = search_term.toLowerCase();
 
       var filteredTweets = [];
       scope.points = [];
@@ -242,6 +218,27 @@
       }
     }
 
+    function countHashtags(all_tweets) {
+        var counts = {}
+        // For each tweet
+        for (var i = 0; i < all_tweets.length; i++) {
+            // For each hashtag
+            for (var j = 0; j < all_tweets[i].hashtag.length; j++) {
+
+                // If the hashtag is in the array, increment it
+                var the_hashtag = all_tweets[i].hashtag[j];
+                if (the_hashtag in counts) {
+                    counts[the_hashtag] += 1;
+
+                // If not, initialize it at 1
+                } else {
+                    counts[the_hashtag] = 1;
+                }
+            }
+        }
+
+        return counts;
+    }
     
 
 })();
