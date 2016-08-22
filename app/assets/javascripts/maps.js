@@ -20,7 +20,6 @@
       var Map = $resource("/maps.json", {}, {
         update: {method: "PUT"}
       });
-
       // vm.data holds all of the tweets in the database
       vm.data = Map.query();
 
@@ -157,13 +156,6 @@
                     populateFilteredTweets($scope, search_term);
                     var layer = document.getElementById("layerInUse");
                     var heatLayer = new createHeatLayer($scope.layerInUse);
-                },
-                takePhoto: function(){
-                    html2canvas(document.main, {
-                        onrendered: function(canvas) {
-                            document.body.appendChild(canvas);
-                        }
-                    })
                 }
               };
               var onSuccess = function(position) {
@@ -178,7 +170,7 @@
               console.log('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
             }
            navigator.geolocation.getCurrentPosition(onSuccess, onError);
-      uiGmapGoogleMapApi.then(function(maps) {
+           uiGmapGoogleMapApi.then(function(maps) {
 
       });
     })
@@ -209,7 +201,6 @@
         if (search_term == "") {
           return tweet_array
         }
-
         // If the search term is not empty
         var result_tweet_array = [];
         for (var i = 0; i < tweet_array.length; i++) {
@@ -220,9 +211,8 @@
         }
         return result_tweet_array;
     }
-
     function populateFilteredTweets(scope, search_term) {
-      //TODO On take in of data and/or population of mock data, ensure that all hashtags are toLowerCase
+      //TODO   On take in of data and/or population of mock data, ensure that all hashtags are toLowerCase
       //TODO   then apply the same to the filter conditions. Otherwise, a query for '#xss' will return
       //TODO   no results when '#XSS' is extant.
 
