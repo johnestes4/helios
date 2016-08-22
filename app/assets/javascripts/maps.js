@@ -76,9 +76,6 @@
       }
 
       function createHeatLayer(heatLayer) {
-        for (var i = 0; i < vm.data.length; i++) {
-          $scope.points.push(new google.maps.LatLng(vm.data[i].coordinates[0], vm.data[i].coordinates[1]));
-        }
         var pointArray = new google.maps.MVCArray($scope.points);
         heat = heatLayer;
         heatLayer.setData(pointArray);
@@ -242,6 +239,7 @@
           }
         }
       }
+      console.log(filteredTweets)
 
       // Create latlong objects with the filtered results
       for (var i = 0; i < filteredTweets.length; i++) {
