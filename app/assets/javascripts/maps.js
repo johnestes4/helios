@@ -109,6 +109,7 @@
                   showHeat: true,
                   zoom: 5,
                   radius: 10,
+                  opacity: .6,
 
                   heatLayerCallback: function (layer) {
                     // Add the dummy points
@@ -158,7 +159,7 @@
                     heat.set('radius', this.radius);
                   },
                   changeOpacity: function() {
-                    heat.set('opacity', heat.get('opacity') ? null : 0.2);
+                    heat.set('opacity', this.opacity);
                   },
 
                   processFilter: function() {
