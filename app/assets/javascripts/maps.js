@@ -70,9 +70,7 @@
             hashtags: ["ruby", "fum", "this"]
           },
         ]
-
       }
-
       function createHeatLayer(heatLayer) {
         var pointArray = new google.maps.MVCArray($scope.points);
         heat = heatLayer;
