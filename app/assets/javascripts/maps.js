@@ -21,6 +21,8 @@
         update: {method: "PUT"}
       });
 
+        var firstLoad = true;
+        
       // vm.data holds all of the tweets in the database
       vm.data = Map.query();
 
@@ -32,49 +34,23 @@
       //   and will be used to inform $scope.points
       $scope.allTweets = Map.query();
 
+
+
       // Returns the full array of google maps latlng objects being displayed
       function getPoints() {
         return $scope.points;
       };
-
-      function setUpDummyTweets() {
-        // TODO Implement this with object oriented tweets
-        var dummy_tweets = [
-          {
-            latitude: "38.902551",
-            longitude: "-77.035368",
-            hashtags: ["this", "that"]
-          },
-          {
-            latitude: "38.902745",
-            longitude: "-77.034586",
-            hashtags: ["foo", "fum"]
-          },
-          {
-            latitude: "38.902951",
-            longitude: "-77.033368",
-            hashtags: ["panda", "that"]
-          },
-          {
-            latitude: "38.903145",
-            longitude: "-77.032586",
-            hashtags: ["ron", "howard"]
-          },
-          {
-            latitude: "38.903351",
-            longitude: "-77.031368",
-            hashtags: ["angular", "schmangular"]
-          },
-          {
-            latitude: "38.903545",
-            longitude: "-77.030586",
-            hashtags: ["ruby", "fum", "this"]
-          },
-        ]
-
-      }
+        
 
       function createHeatLayer(heatLayer) {
+          // Poplulate the heat map if this is the first pass through. If not, the filter has been applied.
+          if (firstLoad == true) {
+              firstLoad = false;
+              for (var i = 0; i < vm.data.length; i++) {
+                  $scope.points.push(new google.maps.LatLng(vm.data[i].coordinates[0], vm.data[i].coordinates[1]));
+              }
+          }
+          
         var pointArray = new google.maps.MVCArray($scope.points);
         heat = heatLayer;
         heatLayer.setData(pointArray);
@@ -181,6 +157,10 @@
       uiGmapGoogleMapApi.then(function(maps) {
 
       });
+
+
+
+
     })
     .config(function(uiGmapGoogleMapApiProvider) {
       uiGmapGoogleMapApiProvider.configure({
@@ -261,4 +241,7 @@
         scope.points.push(point_obj);
       }
     }
+
+    
+
 })();
