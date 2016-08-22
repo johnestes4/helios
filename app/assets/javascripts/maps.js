@@ -21,6 +21,7 @@
       vm.data = Map.query();
       $scope.points = [
       ];
+      $scope.radius = 20;
       function getPoints() {
         return $scope.points;
       };
@@ -59,6 +60,7 @@
                     $scope.layerInUse = layer;
                     //set the heat layers backend data
                     var heatLayer = new createHeatLayer(layer);
+                    heat.set('radius', $scope.radius)
                   },
                   toggleHeat: function() {
                     this.showHeat = !this.showHeat;
@@ -89,8 +91,13 @@
                       'rgba(255, 0, 0, 1)'
                     ]
                     heat.set('gradient', heat.get('gradient') ? null : gradient);
+                  },
+                  changeRadius: function() {
+                    heat.set('radius', $scope.radius)
+                  },
+                  changeOpacity: function() {
+                    heat.set('opacity', heat.get('opacity') ? null : 0.2);
                   }
-
               };
       uiGmapGoogleMapApi.then(function(maps) {
 
