@@ -32,8 +32,6 @@
       //   and will be used to inform $scope.points
       $scope.allTweets = Map.query();
 
-
-
       // Returns the full array of google maps latlng objects being displayed
       function getPoints() {
         return $scope.points;
@@ -77,9 +75,6 @@
       }
 
       function createHeatLayer(heatLayer) {
-        for (var i = 0; i < vm.data.length; i++) {
-          $scope.points.push(new google.maps.LatLng(vm.data[i].coordinates[0], vm.data[i].coordinates[1]));
-        }
         var pointArray = new google.maps.MVCArray($scope.points);
         heat = heatLayer;
         heatLayer.setData(pointArray);
@@ -104,19 +99,19 @@
       // Set up the google map
       $scope.map = {
                   center: {
-                  latitude: 38.907240,
-                  longitude: -77.036591
+                  latitude: 40.907240,
+                  longitude: -75.036591
                   },
                   showHeat: true,
-                  zoom: 5,
+                  zoom: 10,
                   radius: 10,
+                  opacity: .6,
 
                   heatLayerCallback: function (layer) {
                     // Add the dummy points
                     // dummyPoints();
                     populateFilteredTweets($scope, "");
                     console.log("scope.points from outside fn");
-
                     $scope.layerInUse = layer;
                     //set the heat layers backend data
                     var heatLayer = new createHeatLayer(layer);
@@ -124,10 +119,6 @@
 
                   toggleHeat: function() {
                     this.showHeat = !this.showHeat;
-                  },
-
-                  log: function() {
-                    console.log("YES")
                   },
 
                   updateHeatLayer: function(newLat, newLong) {
@@ -158,7 +149,7 @@
                     heat.set('radius', this.radius);
                   },
                   changeOpacity: function() {
-                    heat.set('opacity', heat.get('opacity') ? null : 0.2);
+                    heat.set('opacity', this.opacity);
                   },
 
                   processFilter: function() {
@@ -175,6 +166,18 @@
                     })
                 }
               };
+              var onSuccess = function(position) {
+               $scope.map.center = {
+                   latitude: position.coords.latitude,
+                   longitude: position.coords.longitude
+               };
+               $scope.$apply();
+               console.log($scope.map.center);
+           }
+           function onError(error) {
+              console.log('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+            }
+           navigator.geolocation.getCurrentPosition(onSuccess, onError);
       uiGmapGoogleMapApi.then(function(maps) {
 
       });
@@ -186,7 +189,6 @@
           libraries: 'weather,geometry,visualization'
       });
     });
-
 
     function oldFilterTweets(tweet_array, search_term) {
         // TODO Implement this with object oriented tweet objects
@@ -249,6 +251,7 @@
           }
         }
       }
+      console.log(filteredTweets)
 
       // Create latlong objects with the filtered results
       for (var i = 0; i < filteredTweets.length; i++) {
