@@ -15,6 +15,7 @@
     ])
     .controller("maps_controller", function($scope, uiGmapGoogleMapApi, $resource) {
       var vm = this;
+      var heat;
       var Map = $resource("/maps.json", {}, {
         update: {method: "PUT"}
       });
@@ -26,7 +27,6 @@
       //   latlng objects to be rendered on the map.
       $scope.points = [
       ];
-
       // Initialize allPoints. This will hold ALL of the possible tweets to be rendered
       //   and will be used to inform $scope.points
       $scope.allTweets = Map.query();
@@ -37,7 +37,6 @@
       function getPoints() {
         return $scope.points;
       };
-
 
       function setUpDummyTweets() {
         // TODO Implement this with object oriented tweets
@@ -77,31 +76,29 @@
       }
 
       function createHeatLayer(heatLayer) {
+        for (var i = 0; i < vm.data.length; i++) {
+          $scope.points.push(new google.maps.LatLng(vm.data[i].coordinates[0], vm.data[i].coordinates[1]));
+        }
         var pointArray = new google.maps.MVCArray($scope.points);
+        heat = heatLayer;
         heatLayer.setData(pointArray);
       };
 
-
-      function updateHeat() {
-        /* Adds
-        * */
-
-
-        console.log(vm.data);
-
-
-
-        // Get all of the points currently being rendered
-        var points = getPoints();
-
-        // Iterate through all tweets in the DB and push each one into the array being rendered
-        // for (var i = 0; i < vm.data.length; i++) {
-        //   $scope.points.push(new google.maps.LatLng(vm.data[i].coordinates[0], vm.data[i].coordinates[1]));
-        // }
-
-        // Nothing happens with this??
-        var pointArray = new google.maps.MVCArray(points);
-      };
+// // Now that this is integrated into createHeatLayer, we don't need the specific function anymore
+//       function updateHeat() {
+//         /* Adds
+//         * */
+//         console.log(vm.data);
+//         // Get all of the points currently being rendered
+//         var points = getPoints();
+//
+//         // Iterate through all tweets in the DB and push each one into the array being rendered
+//         // for (var i = 0; i < vm.data.length; i++) {
+//         //   $scope.points.push(new google.maps.LatLng(vm.data[i].coordinates[0], vm.data[i].coordinates[1]));
+//         // }
+//         // Nothing happens with this??
+//         var pointArray = new google.maps.MVCArray(points);
+//       };
 
       // Set up the google map
       $scope.map = {
@@ -110,17 +107,15 @@
                   longitude: -77.036591
                   },
                   showHeat: true,
-                  zoom: 14,
+                  zoom: 5,
+                  radius: 10,
 
                   heatLayerCallback: function (layer) {
                     // Add the dummy points
                     // dummyPoints();
-
-
                     populateFilteredTweets($scope, "");
                     console.log("scope.points from outside fn");
                     console.log($scope.points);
-
 
                     $scope.layerInUse = layer;
                     //set the heat layers backend data
@@ -139,6 +134,31 @@
                     updateHeat(newLat, newLong);
                     var layer = document.getElementById("layerInUse");
                     var heatLayer = new createHeatLayer($scope.layerInUse);
+                  },
+                  changeGradient: function() {
+                    var gradient = [
+                      'rgba(0, 255, 255, 0)',
+                      'rgba(0, 255, 255, 1)',
+                      'rgba(0, 191, 255, 1)',
+                      'rgba(0, 127, 255, 1)',
+                      'rgba(0, 63, 255, 1)',
+                      'rgba(0, 0, 255, 1)',
+                      'rgba(0, 0, 223, 1)',
+                      'rgba(0, 0, 191, 1)',
+                      'rgba(0, 0, 159, 1)',
+                      'rgba(0, 0, 127, 1)',
+                      'rgba(63, 0, 91, 1)',
+                      'rgba(127, 0, 63, 1)',
+                      'rgba(191, 0, 31, 1)',
+                      'rgba(255, 0, 0, 1)'
+                    ]
+                    heat.set('gradient', heat.get('gradient') ? null : gradient);
+                  },
+                  changeRadius: function() {
+                    heat.set('radius', this.radius);
+                  },
+                  changeOpacity: function() {
+                    heat.set('opacity', heat.get('opacity') ? null : 0.2);
                   },
 
                   processFilter: function() {
