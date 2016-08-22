@@ -9,10 +9,9 @@ namespace :twitter do
             config.auth_method        = :oauth
         end
         puts 'I authenticated'
-        TweetStream::Client.new.filter(:follow => [52422878, 14955353, 88703900, 21870081, 110422282, 17483462, 133448051, 17049258, 211228546, 375796206]) do |status|
-            if status.place != none
-                binding.pry
-            end
+        TweetStream::Client.new.sample do |status|
+            puts 'status was received'
+            puts status.coordinates[0]
         end
     end
 end
