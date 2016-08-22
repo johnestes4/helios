@@ -28,7 +28,7 @@ html, body {
   text-align: center;
   font-family: 'Roboto','sans-serif';
   line-height: 30px;
-  width: 80px;
+  width: 100px;
   margin-top: 10px;
   padding-top: 5px;
 }
@@ -37,7 +37,7 @@ html, body {
   float: left;
   left: 0;
   width: 100%;
-  font-size: .9em;
+  font-size: .8em;
   margin-bottom: 5%;
 }
 
@@ -55,13 +55,13 @@ html, body {
   width: 50%;
   font-size: 1em;
   margin-top: 2px;
-  font-size: .7em;
+  font-size: .9em;
 }
 .panel-field-wide {
   float: right;
   left: 0;
   width: 100%;
-  font-size: .6em;
+  font-size: .8em;
   margin-bottom: 5%;
   text-align: center;
 }
