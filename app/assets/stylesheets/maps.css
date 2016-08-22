@@ -37,7 +37,6 @@ html, body {
   width: 100%;
   font-size: .7em;
   margin-bottom: 5%;
-  opacity: .8%;
 }
 
 .panel-field {
@@ -46,7 +45,6 @@ html, body {
   width: 50%;
   font-size: .9em;
   margin-bottom: 5%;
-  opacity: .8%;
   text-align: center;
 }
 
@@ -54,4 +52,12 @@ html, body {
   float: left;
   width: 50%;
   margin-top: 2px;
+}
+.panel-field-wide {
+  float: right;
+  left: 0;
+  width: 100%;
+  font-size: .9em;
+  margin-bottom: 5%;
+  text-align: center;
 }
