@@ -28,7 +28,9 @@ html, body {
   text-align: center;
   font-family: 'Roboto','sans-serif';
   line-height: 30px;
-  width: 120px;
+  width: 80px;
+  margin-top: 10px;
+  padding-top: 5px;
 }
 
 .panel-button {
@@ -53,12 +55,13 @@ html, body {
   width: 50%;
   font-size: 1em;
   margin-top: 2px;
+  font-size: .7em;
 }
 .panel-field-wide {
   float: right;
   left: 0;
   width: 100%;
-  font-size: .9em;
+  font-size: .6em;
   margin-bottom: 5%;
   text-align: center;
 }

@@ -41,6 +41,10 @@ gem 'jquery-rails', '~> 4.1', '>= 4.1.1'
 gem 'faker'
 # it said we needed this for json files
 gem 'active_model_serializers', '~> 0.10.0'
+#action gem for maps
+gem 'screencap'
+#screencap processes
+gem 'paperclip'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

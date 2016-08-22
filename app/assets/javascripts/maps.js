@@ -4,6 +4,7 @@
 //= require angular-google-maps
 //= require angular-simple-logger
 //= require jquery
+//= require html2canvas
 
 "use strict";
 
@@ -111,7 +112,6 @@
                     // dummyPoints();
                     populateFilteredTweets($scope, "");
                     console.log("scope.points from outside fn");
-                    console.log($scope.points);
                     $scope.layerInUse = layer;
                     //set the heat layers backend data
                     var heatLayer = new createHeatLayer(layer);
@@ -157,7 +157,14 @@
                     populateFilteredTweets($scope, search_term);
                     var layer = document.getElementById("layerInUse");
                     var heatLayer = new createHeatLayer($scope.layerInUse);
-                  }
+                },
+                takePhoto: function(){
+                    html2canvas(document.main, {
+                        onrendered: function(canvas) {
+                            document.body.appendChild(canvas);
+                        }
+                    })
+                }
               };
               var onSuccess = function(position) {
                $scope.map.center = {
@@ -258,5 +265,4 @@
         scope.points.push(point_obj);
       }
     }
-
 })();
