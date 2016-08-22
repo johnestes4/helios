@@ -20,6 +20,7 @@
       var Map = $resource("/maps.json", {}, {
         update: {method: "PUT"}
       });
+      console.log(Map.query().length)
       // vm.data holds all of the tweets in the database
       vm.data = Map.query();
 
