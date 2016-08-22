@@ -5,6 +5,7 @@
     <div id="floating-panel">
       <button data-ng-click="map.toggleHeat()">Toggle Heatmap</button>
       <button data-ng-click="map.updateHeatLayer()">test new coordinate</button>
+      <input ng-keyup="map.processFilter()" type="text" id="filter-search-term" placeholder="Filter by hashtag">
     </div>
     <ui-gmap-google-map center='map.center' zoom='map.zoom'>
         <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="map.showHeat" onCreated="map.heatLayerCallback" id="layerInUse"></ui-gmap-layer>
