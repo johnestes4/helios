@@ -20,9 +20,7 @@
     <div class="container">
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
-                <li ui-sref-active="active" class="active"><a ui-sref="home" rel="start" href="#!/">Home</a></li>
-                <li ui-sref-active="active"><a ui-sref="api" rel="api" href="#!/api">API documentation</a></li>
-                <li ui-sref-active="active"><a ui-sref="changelog" rel="changelog" href="#!/changelog">Changelog</a></li>
+                <li ui-sref-active="active" class="active"><a ui-sref="home" rel="external" href="#!/">Home</a></li>
                 <li class="dropdown">
                     <ul class="dropdown-menu">
                         <li><a href="https://github.com/angular-ui/angular-google-maps" rel="external" target="_blank" class="link-external"><i class="icon-github-alt"></i> Code</a></li>
@@ -41,22 +39,37 @@
                 <div class='row'>
                     <div class='col-md-4'>
                         <div class='well'>
-                            <p>Testing Look At Our App</p>
-                            <p>Picture Button</p>
-                            <p>Github Link</p>
+                            <p class='lead'>Use the Interface on the right to see a live feed of Tweets across the world</p>
+                            <p>The Map Center will Automatically update to your current location</p>
+                            <p>Data is Visuzlized as a heatmap showing concentration of current twitter activity</p>
+                            <p>You can use the HashTag filter to see where the current trending tags are located</p>
                         </div>
                     </div>
-                        <div class='col-md-8 map'>
+                    <div class='col-md-8 map'>
                             <%= yield %>
+                    </div>
+                </div>
+                <div class='col-md-12'>
+                    <h2 class='page-doc'>Tweet Stream</h2>
+                    <div class="col-md-12">
+                        <div class='well'>
+                            <p>THIS IS A TWEET</p>
+                            <p>THIS IS A TWEET</p>
+                            <p>THIS IS A TWEET</p>
+                            <p>THIS IS A TWEET</p>
                         </div>
-                    <div class='col-md-12'>
-                        <h2 class='page-doc'>Stream of Tweets?</h2>
+                </div>
+                <div class = 'col-md-6'>
+                    <h2 class='page-doc'>About</h2>
+                    <div class='well'>
                     </div>
-                    <div class = 'col-md-6'>
-                        <h2 class='page-doc'>About</h2>
-                    </div>
-                    <div class = 'col-md-6'>
-                        <h2 class='page-doc'>Contributors</h2>
+                </div>
+                <div class = 'col-md-6'>
+                    <h2 class='page-doc'>Contributors</h2>
+                    <div class='well'>
+                        <p>John Estes</p>
+                        <p>Michael Mahoney</p>
+                        <p>Chris Phillips</p>
                     </div>
                 </div>
             </div>
