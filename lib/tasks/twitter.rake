@@ -9,9 +9,23 @@ namespace :twitter do
             config.auth_method        = :oauth
         end
         puts 'I authenticated'
-        TweetStream::Client.new.sample do |status|
-            puts 'status was received'
-            puts status.coordinates[0]
+        tweet_count = 0
+        # TweetStream::Client.new.filter() do |status|
+
+        TweetStream::Client.new.locations([-180,-90,180,90]) do |status|
+            if status.geo.longitude.to_s != ""
+              tweet_count += 1
+              puts "-----------------------------------------------------------------" + tweet_count.to_s
+              text = status.text
+              hashtag_list = []
+              status.hashtags.each { |hashtag| hashtag_list.push(hashtag.text) }
+              coordinates = [status.geo.latitude.to_s, status.geo.longitude.to_s]
+
+              Map.create(coordinates: coordinates, hashtag: hashtag_list)
+
+              puts status.geo.latitude.to_s, status.geo.longitude.to_s
+
+            end
         end
     end
 end
