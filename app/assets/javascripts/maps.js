@@ -238,10 +238,6 @@
 
       // Otherwise, filter the tweets.
       } else {
-        // If the search term is not empty and does not lead with a #, prepend it
-        if (search_term.charAt(0) != "#") {
-          search_term = "#" + search_term;
-        }
 
         for (var i = 0; i < scope.allTweets.length; i++) {
           // If the tweet has the given hashtag
