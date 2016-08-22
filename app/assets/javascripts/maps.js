@@ -3,6 +3,7 @@
 //= require lodash
 //= require angular-google-maps
 //= require angular-simple-logger
+//= require jquery
 
 "use strict";
 
@@ -138,6 +139,13 @@
                     updateHeat(newLat, newLong);
                     var layer = document.getElementById("layerInUse");
                     var heatLayer = new createHeatLayer($scope.layerInUse);
+                  },
+
+                  processFilter: function() {
+                    var search_term = $("#filter-search-term").val();
+                    populateFilteredTweets($scope, search_term);
+                    var layer = document.getElementById("layerInUse");
+                    var heatLayer = new createHeatLayer($scope.layerInUse);
                   }
               };
       uiGmapGoogleMapApi.then(function(maps) {
@@ -167,8 +175,9 @@
          * Returns: A tweet array in the same form as above.
          */
 
+
         // If the search term is an empty string, return the original array
-        if (search_term.trim() == "") {
+        if (search_term == "") {
           return tweet_array
         }
 
@@ -176,7 +185,7 @@
         var result_tweet_array = [];
         for (var i = 0; i < tweet_array.length; i++) {
           // Check if the trimmed search term is in the hashtag array
-          if (tweet_array[i].hashtags.indexOf(search_term.trim()) != -1) {
+          if (tweet_array[i].hashtags.indexOf(search_term) != -1) {
                 result_tweet_array.push(tweet_array[i]);
             }
         }
@@ -191,19 +200,23 @@
       var filteredTweets = [];
       scope.points = [];
 
-      console.log("Scope.allTweets")
-      console.log(scope.allTweets);
+      // Get rid of leading or trailing whitespace
+      search_term = search_term.trim();
 
       // If the search term is empty, we will show all tweets
-      if (search_term.trim() == "") {
-        console.log("Search term is empty string");
+      if (search_term == "") {
         filteredTweets = scope.allTweets;
 
       // Otherwise, filter the tweets.
       } else {
+        // If the search term is not empty and does not lead with a #, prepend it
+        if (search_term.charAt(0) != "#") {
+          search_term = "#" + search_term;
+        }
+
         for (var i = 0; i < scope.allTweets.length; i++) {
           // If the tweet has the given hashtag
-          if (scope.allTweets[i].hashtag.indexOf(search_term.trim()) != -1) {
+          if (scope.allTweets[i].hashtag.indexOf(search_term) != -1) {
             // Get the coordinates
             filteredTweets.push(scope.allTweets[i]);
           }
@@ -212,7 +225,6 @@
 
       // Create latlong objects with the filtered results
       for (var i = 0; i < filteredTweets.length; i++) {
-        console.log(filteredTweets[i]);
 
         // Get the coordinates
         var lat = filteredTweets[i].coordinates[0];
@@ -221,13 +233,7 @@
 
         // Push the new point object into scope.points
         scope.points.push(point_obj);
-
-
       }
-
-
-      console.log("scope.points within filter function")
-      console.log(scope.points)
     }
 
 })();
