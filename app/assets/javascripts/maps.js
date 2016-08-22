@@ -17,12 +17,20 @@
       var Map = $resource("/maps.json", {}, {
         update: {method: "PUT"}
       });
+
+      // vm.data holds all of the tweets in the database
       vm.data = Map.query();
 
-      // Initialize points. $scope.points will hold all of the google maps
-      //   latlng objects to be rendered on the map
+      // Initialize points. $scope.points will hold all of the filtered google maps
+      //   latlng objects to be rendered on the map.
       $scope.points = [
       ];
+
+      // Initialize allPoints. This will hold ALL of the possible tweets to be rendered
+      //   and will be used to inform $scope.points
+      $scope.allTweets = Map.query();
+
+
 
       // Returns the full array of google maps latlng objects being displayed
       function getPoints() {
@@ -30,17 +38,41 @@
       };
 
 
-      function dummyPoints() {
-        $scope.points.push(new google.maps.LatLng(38.902551, -77.035368));
-        $scope.points.push(new google.maps.LatLng(38.902745, -77.034586));
-        $scope.points.push(new google.maps.LatLng(38.902842, -77.033688));
-        $scope.points.push(new google.maps.LatLng(38.902919, -77.032815));
-        $scope.points.push(new google.maps.LatLng(38.902992, -77.032112));
-        $scope.points.push(new google.maps.LatLng(38.903100, -77.031461));
-        $scope.points.push(new google.maps.LatLng(38.903206, -77.030829));
-        $scope.points.push(new google.maps.LatLng(38.903273, -77.030324));
-        $scope.points.push(new google.maps.LatLng(38.903316, -77.030023));
-        $scope.points.push(new google.maps.LatLng(38.903357, -77.029794))
+      function setUpDummyTweets() {
+        // TODO Implement this with object oriented tweets
+        var dummy_tweets = [
+          {
+            latitude: "38.902551",
+            longitude: "-77.035368",
+            hashtags: ["this", "that"]
+          },
+          {
+            latitude: "38.902745",
+            longitude: "-77.034586",
+            hashtags: ["foo", "fum"]
+          },
+          {
+            latitude: "38.902951",
+            longitude: "-77.033368",
+            hashtags: ["panda", "that"]
+          },
+          {
+            latitude: "38.903145",
+            longitude: "-77.032586",
+            hashtags: ["ron", "howard"]
+          },
+          {
+            latitude: "38.903351",
+            longitude: "-77.031368",
+            hashtags: ["angular", "schmangular"]
+          },
+          {
+            latitude: "38.903545",
+            longitude: "-77.030586",
+            hashtags: ["ruby", "fum", "this"]
+          },
+        ]
+
       }
 
       function createHeatLayer(heatLayer) {
@@ -48,15 +80,29 @@
         heatLayer.setData(pointArray);
       };
 
+
       function updateHeat() {
+        /* Adds
+        * */
+
+
         console.log(vm.data);
+
+
+
+        // Get all of the points currently being rendered
         var points = getPoints();
-        for (var i = 0; i < vm.data.length; i++) {
-          $scope.points.push(new google.maps.LatLng(vm.data[i].coordinates[0], vm.data[i].coordinates[1]));
-        }
+
+        // Iterate through all tweets in the DB and push each one into the array being rendered
+        // for (var i = 0; i < vm.data.length; i++) {
+        //   $scope.points.push(new google.maps.LatLng(vm.data[i].coordinates[0], vm.data[i].coordinates[1]));
+        // }
+
+        // Nothing happens with this??
         var pointArray = new google.maps.MVCArray(points);
       };
 
+      // Set up the google map
       $scope.map = {
                   center: {
                   latitude: 38.907240,
@@ -64,18 +110,30 @@
                   },
                   showHeat: true,
                   zoom: 14,
+
                   heatLayerCallback: function (layer) {
-                    dummyPoints();
+                    // Add the dummy points
+                    // dummyPoints();
+
+
+                    populateFilteredTweets($scope, "");
+                    console.log("scope.points from outside fn");
+                    console.log($scope.points);
+
+
                     $scope.layerInUse = layer;
                     //set the heat layers backend data
                     var heatLayer = new createHeatLayer(layer);
                   },
+
                   toggleHeat: function() {
                     this.showHeat = !this.showHeat;
                   },
+
                   log: function() {
                     console.log("YES")
                   },
+
                   updateHeatLayer: function(newLat, newLong) {
                     updateHeat(newLat, newLong);
                     var layer = document.getElementById("layerInUse");
@@ -95,7 +153,7 @@
     });
 
 
-    function filterTweets(tweet_array, search_term) {
+    function oldFilterTweets(tweet_array, search_term) {
         // TODO Implement this with object oriented tweet objects
         /* Takes in an array of tweets and a search term and returns
          *   an array of tweets with hashtags that match the search.
@@ -124,4 +182,52 @@
         }
         return result_tweet_array;
     }
+
+    function populateFilteredTweets(scope, search_term) {
+      //TODO On take in of data and/or population of mock data, ensure that all hashtags are toLowerCase
+      //TODO   then apply the same to the filter conditions. Otherwise, a query for '#xss' will return
+      //TODO   no results when '#XSS' is extant.
+
+      var filteredTweets = [];
+      scope.points = [];
+
+      console.log("Scope.allTweets")
+      console.log(scope.allTweets);
+
+      // If the search term is empty, we will show all tweets
+      if (search_term.trim() == "") {
+        console.log("Search term is empty string");
+        filteredTweets = scope.allTweets;
+
+      // Otherwise, filter the tweets.
+      } else {
+        for (var i = 0; i < scope.allTweets.length; i++) {
+          // If the tweet has the given hashtag
+          if (scope.allTweets[i].hashtag.indexOf(search_term.trim()) != -1) {
+            // Get the coordinates
+            filteredTweets.push(scope.allTweets[i]);
+          }
+        }
+      }
+
+      // Create latlong objects with the filtered results
+      for (var i = 0; i < filteredTweets.length; i++) {
+        console.log(filteredTweets[i]);
+
+        // Get the coordinates
+        var lat = filteredTweets[i].coordinates[0];
+        var long = filteredTweets[i].coordinates[1];
+        var point_obj = new google.maps.LatLng(lat, long);
+
+        // Push the new point object into scope.points
+        scope.points.push(point_obj);
+
+
+      }
+
+
+      console.log("scope.points within filter function")
+      console.log(scope.points)
+    }
+
 })();
