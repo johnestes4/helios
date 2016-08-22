@@ -34,7 +34,8 @@
  .headline{
      text-align: center;
      font-size: 60px;
-     color: white;
+     margin-bottom: 1em;
+     color: #D2C706
  }
  .row{
      margin-left: -15px;
@@ -62,4 +63,9 @@
 .page-doc{
     text-align: center;
     color: white;
+}
+
+.lead{
+    font-size: 30px;
+    font-weight: bold;
 }
