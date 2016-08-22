@@ -8,11 +8,11 @@
       <button class="panel-button" data-ng-click="map.changeGradient()">Change Gradient</button>
       <div class="field-container">
         <div class="field-desc">Radius:</div>
-        <input ng-change="map.changeRadius()" ng-model="map.radius" type="number" max="100" class="panel-field">
+        <input ng-change="map.changeRadius()" ng-model="map.radius" type="number" min="0" max="100" class="panel-field">
       </div>
       <div class="field-container">
         <div class="field-desc">Opacity:</div>
-        <input ng-change="map.changeOpacity()" ng-model="map.opacity" type="number" max="1" step="0.1" class="panel-field">
+        <input ng-change="map.changeOpacity()" ng-model="map.opacity" type="number" min="0" max="1" step="0.1" class="panel-field">
       </div>
     </div>
     <ui-gmap-google-map center='map.center' zoom='map.zoom'>
