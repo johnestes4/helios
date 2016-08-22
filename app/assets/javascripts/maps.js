@@ -30,6 +30,13 @@
         ];
         // Initialize allPoints. This will hold ALL of the possible tweets to be rendered
         //   and will be used to inform $scope.points
+        window.setInterval(function(){
+            var Map = $resource("/maps.json", {}, {
+                update: {method: "PUT"}
+            });
+            $scope.allTweets = Map.query();
+            console.log('updated')
+        }, 10000);
         $scope.allTweets = Map.query();
         // Returns the full array of google maps latlng objects being displayed
 
@@ -74,6 +81,11 @@
                 this.showHeat = !this.showHeat;
             },
 
+            pushUpdates: function(){
+                populateFilteredTweets($scope, "");
+                var layer = document.getElementById("layerInUse");
+                var heatLayer = new createHeatLayer($scope.layerInUse);
+            },
             updateHeatLayer: function(newLat, newLong) {
                 updateHeat(newLat, newLong);
                 var layer = document.getElementById("layerInUse");
@@ -176,4 +188,6 @@
             scope.points.push(point_obj);
         }
     }
+
+
 })();
