@@ -31,8 +31,6 @@
       //   and will be used to inform $scope.points
       $scope.allTweets = Map.query();
 
-
-
       // Returns the full array of google maps latlng objects being displayed
       function getPoints() {
         return $scope.points;
@@ -103,11 +101,11 @@
       // Set up the google map
       $scope.map = {
                   center: {
-                  latitude: 38.907240,
-                  longitude: -77.036591
+                  latitude: 35.907240,
+                  longitude: -75.036591
                   },
                   showHeat: true,
-                  zoom: 5,
+                  zoom: 10,
                   radius: 10,
                   opacity: .6,
 
@@ -117,7 +115,6 @@
                     populateFilteredTweets($scope, "");
                     console.log("scope.points from outside fn");
                     console.log($scope.points);
-
                     $scope.layerInUse = layer;
                     //set the heat layers backend data
                     var heatLayer = new createHeatLayer(layer);
@@ -125,10 +122,6 @@
 
                   toggleHeat: function() {
                     this.showHeat = !this.showHeat;
-                  },
-
-                  log: function() {
-                    console.log("YES")
                   },
 
                   updateHeatLayer: function(newLat, newLong) {
@@ -169,6 +162,18 @@
                     var heatLayer = new createHeatLayer($scope.layerInUse);
                   }
               };
+              var onSuccess = function(position) {
+               $scope.map.center = {
+                   latitude: position.coords.latitude,
+                   longitude: position.coords.longitude
+               };
+               $scope.$apply();
+               console.log($scope.map.center);
+           }
+           function onError(error) {
+              console.log('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+            }
+           navigator.geolocation.getCurrentPosition(onSuccess, onError);
       uiGmapGoogleMapApi.then(function(maps) {
 
       });
@@ -180,7 +185,6 @@
           libraries: 'weather,geometry,visualization'
       });
     });
-
 
     function oldFilterTweets(tweet_array, search_term) {
         // TODO Implement this with object oriented tweet objects
