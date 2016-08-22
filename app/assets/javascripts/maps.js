@@ -14,6 +14,7 @@
     ])
     .controller("maps_controller", function($scope, uiGmapGoogleMapApi, $resource) {
       var vm = this;
+      var heat;
       var Map = $resource("/maps.json", {}, {
         update: {method: "PUT"}
       });
@@ -37,17 +38,13 @@
       }
 
       function createHeatLayer(heatLayer) {
-        var pointArray = new google.maps.MVCArray($scope.points);
-        heatLayer.setData(pointArray);
-      };
-
-      function updateHeat() {
-        console.log(vm.data);
-        var points = getPoints();
         for (var i = 0; i < vm.data.length; i++) {
           $scope.points.push(new google.maps.LatLng(vm.data[i].coordinates[0], vm.data[i].coordinates[1]));
         }
-        var pointArray = new google.maps.MVCArray(points);
+
+        var pointArray = new google.maps.MVCArray($scope.points);
+        heat = heatLayer;
+        heatLayer.setData(pointArray);
       };
 
       $scope.map = {
@@ -73,7 +70,27 @@
                     updateHeat(newLat, newLong);
                     var layer = document.getElementById("layerInUse");
                     var heatLayer = new createHeatLayer($scope.layerInUse);
+                  },
+                  changeGradient: function() {
+                    var gradient = [
+                      'rgba(0, 255, 255, 0)',
+                      'rgba(0, 255, 255, 1)',
+                      'rgba(0, 191, 255, 1)',
+                      'rgba(0, 127, 255, 1)',
+                      'rgba(0, 63, 255, 1)',
+                      'rgba(0, 0, 255, 1)',
+                      'rgba(0, 0, 223, 1)',
+                      'rgba(0, 0, 191, 1)',
+                      'rgba(0, 0, 159, 1)',
+                      'rgba(0, 0, 127, 1)',
+                      'rgba(63, 0, 91, 1)',
+                      'rgba(127, 0, 63, 1)',
+                      'rgba(191, 0, 31, 1)',
+                      'rgba(255, 0, 0, 1)'
+                    ]
+                    heat.set('gradient', heat.get('gradient') ? null : gradient);
                   }
+
               };
       uiGmapGoogleMapApi.then(function(maps) {
 

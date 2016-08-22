@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 $i = 0
-$num = 5
+$num = 1000
 while $i < $num  do
     Map.create(coordinates: [Faker::Address.latitude, Faker::Address.longitude], hashtag:['#'+Faker::Hacker.abbreviation, '#'+Faker::Hipster.word])
    $i +=1
