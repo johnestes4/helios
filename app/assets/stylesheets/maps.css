@@ -35,7 +35,7 @@ html, body {
   float: left;
   left: 0;
   width: 100%;
-  font-size: .7em;
+  font-size: .9em;
   margin-bottom: 5%;
 }
 
@@ -43,7 +43,7 @@ html, body {
   float: right;
   left: 0;
   width: 50%;
-  font-size: .9em;
+  font-size: 1em;
   margin-bottom: 5%;
   text-align: center;
 }
@@ -51,6 +51,7 @@ html, body {
 .field-desc {
   float: left;
   width: 50%;
+  font-size: 1em;
   margin-top: 2px;
 }
 .panel-field-wide {
@@ -58,6 +59,13 @@ html, body {
   left: 0;
   width: 100%;
   font-size: .9em;
+  margin-bottom: 5%;
+  text-align: center;
+}
+.field-container {
+  float: right;
+  left: 0;
+  width: 100%;
   margin-bottom: 5%;
   text-align: center;
 }
