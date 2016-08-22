@@ -20,7 +20,9 @@
       var Map = $resource("/maps.json", {}, {
         update: {method: "PUT"}
       });
-      console.log(Map.query().length)
+
+
+        var firstLoad = true;
       // vm.data holds all of the tweets in the database
       vm.data = Map.query();
 
@@ -31,6 +33,8 @@
       // Initialize allPoints. This will hold ALL of the possible tweets to be rendered
       //   and will be used to inform $scope.points
       $scope.allTweets = Map.query();
+
+
 
       // Returns the full array of google maps latlng objects being displayed
       function getPoints() {
@@ -73,6 +77,14 @@
         ]
       }
       function createHeatLayer(heatLayer) {
+          // Poplulate the heat map if this is the first pass through. If not, the filter has been applied.
+          if (firstLoad == true) {
+              firstLoad = false;
+              for (var i = 0; i < vm.data.length; i++) {
+                  $scope.points.push(new google.maps.LatLng(vm.data[i].coordinates[0], vm.data[i].coordinates[1]));
+              }
+          }
+
         var pointArray = new google.maps.MVCArray($scope.points);
         heat = heatLayer;
         heatLayer.setData(pointArray);
@@ -172,6 +184,10 @@
            uiGmapGoogleMapApi.then(function(maps) {
 
       });
+
+
+
+
     })
     .config(function(uiGmapGoogleMapApiProvider) {
       uiGmapGoogleMapApiProvider.configure({
