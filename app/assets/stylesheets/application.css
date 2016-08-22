@@ -13,12 +13,28 @@
  *= require_self
  *= require_layout
  */
+
+ body{
+     padding-top: 10px;
+     background: url("http://digitalresult.com/wp-content/uploads/2015/09/earth-desktop-wallpapers-8.jpeg");
+     background-position: center center;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-size: cover;
+     background-color: #c4c4c4;
+ }
+ .navbar-nav > li > a {
+     padding-top:5px !important;
+     padding-bottom:5px !important;}
+.navbar {
+    min-height:32px !important}
  .container{
      width:970px;
  }
  .headline{
      text-align: center;
      font-size: 60px;
+     color: white;
  }
  .row{
      margin-left: -15px;
@@ -31,6 +47,8 @@
 }
 
 .well{
+    background-color: #262626!important;
+    color: white;
     min-height: 20px;
     padding: 19px;
     margin-bottom: 20px;
@@ -43,4 +61,5 @@
 
 .page-doc{
     text-align: center;
+    color: white;
 }
