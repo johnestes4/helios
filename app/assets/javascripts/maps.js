@@ -69,6 +69,15 @@
             radius: 10,
             opacity: .6,
 
+            updateMom: function(){
+                console.log($scope.allTweets.length)
+                $('.status-one').html($scope.allTweets[$scope.allTweets.length-1].status)
+                $('.status-two').html($scope.allTweets[$scope.allTweets.length-2].status)
+                $('.status-three').html($scope.allTweets[$scope.allTweets.length-3].status)
+                $('.status-four').html($scope.allTweets[$scope.allTweets.length-4].status)
+                $('.status-five').html($scope.allTweets[$scope.allTweets.length-5].status)
+            },
+
             heatLayerCallback: function (layer) {
                 populateFilteredTweets($scope, "");
                 console.log("scope.points from outside fn");
@@ -149,11 +158,7 @@
                 $('.hash-three').html('#' + hash_count_tuples[hash_count_tuples.length-3][0])
                 $('.hash-four').html('#' + hash_count_tuples[hash_count_tuples.length-4][0])
                 $('.hash-five').html('#' + hash_count_tuples[hash_count_tuples.length-5][0])
-            },
-
-            updateTweets: function(){
-
-            },
+            }
         };
 
         var onSuccess = function(position) {
