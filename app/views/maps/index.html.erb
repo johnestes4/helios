@@ -2,24 +2,35 @@
 <%= javascript_include_tag "maps" %>
 
 <div class="container" data-ng-app="heatMap">
-  <main data-ng-controller="maps_controller as vm">
-    <div id="floating-panel">
-      <input ng-keyup="map.processFilter()" type="text" id="filter-search-term" class="panel-field-wide" placeholder="Filter by hashtag">
-      <button class="panel-button" data-ng-click="map.toggleHeat()">Toggle Heatmap</button>
-      <button class="panel-button" data-ng-click="map.changeGradient()">Change Gradient</button>
-      <button class="panel-button" data-ng-click="map.takePhoto()">ScreenShot</button>
-      <button class="panel-button" data-ng-click="Map.query()">Update Tweets</button>
-      <div class="field-container">
-        <div class="field-desc">Radius:</div>
-        <input ng-change="map.changeRadius()" ng-model="map.radius" type="number" max="100" id="new-radius" class="panel-field">
-      </div>
-      <div class="field-container">
-        <div class="field-desc">Opacity:</div>
-        <input ng-change="map.changeOpacity()" ng-model="map.opacity" type="number" min="0" max="1" step="0.1" class="panel-field">
-      </div>
+    <div class='col-md-2 hashtags'>
+        <div class='well'>
+            <p class='lead'>Trending HashTags</p>
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+            <p>4</p>
+            <p>5</p>
+        </div>
     </div>
-    <ui-gmap-google-map center='map.center' zoom='map.zoom'>
-        <ui-gmap-layer namespace="visualization" type="HeatmapLayer" radius = "map.radius" show="map.showHeat" onCreated="map.heatLayerCallback" id="layerInUse"></ui-gmap-layer>
-    </ui-gmap-google-map>
-  </main>
-</div>
+    <div class='col-md-10 map'>
+        <main data-ng-controller="maps_controller as vm">
+            <div id="floating-panel">
+                <input ng-keyup="map.processFilter()" type="text" id="filter-search-term" class="panel-field-wide" placeholder="Filter by hashtag">
+                <button class="panel-button" data-ng-click="map.toggleHeat()">Toggle Heatmap</button>
+                <button class="panel-button" data-ng-click="map.changeGradient()">Change Gradient</button>
+                <button class="panel-button" data-ng-click="map.takePhoto()">ScreenShot</button>
+                <button class="panel-button" data-ng-click="Map.query()">Update Tweets</button>
+                <div class="field-container">
+                    <div class="field-desc">Radius:</div>
+                    <input ng-change="map.changeRadius()" ng-model="map.radius" type="number" max="100" id="new-radius" class="panel-field">
+                </div>
+                <div class="field-container">
+                    <div class="field-desc">Opacity:</div>
+                    <input ng-change="map.changeOpacity()" ng-model="map.opacity" type="number" min="0" max="1" step="0.1" class="panel-field">
+                </div>
+            </div>
+            <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+                <ui-gmap-layer namespace="visualization" type="HeatmapLayer" radius = "map.radius" show="map.showHeat" onCreated="map.heatLayerCallback" id="layerInUse"></ui-gmap-layer>
+            </ui-gmap-google-map>
+        </main>
+    </div>
