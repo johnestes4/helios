@@ -8,7 +8,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   </head>
-  <nav class="navbar navbar-inverse" role="navigation">
+  <!-- <nav class="navbar navbar-inverse" role="navigation">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -20,9 +20,7 @@
     <div class="container">
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
-                <li ui-sref-active="active" class="active"><a ui-sref="home" rel="start" href="#!/">Home</a></li>
-                <li ui-sref-active="active"><a ui-sref="api" rel="api" href="#!/api">API documentation</a></li>
-                <li ui-sref-active="active"><a ui-sref="changelog" rel="changelog" href="#!/changelog">Changelog</a></li>
+                <li ui-sref-active="active" class="active"><a ui-sref="home" rel="external" href="#!/">Home</a></li>
                 <li class="dropdown">
                     <ul class="dropdown-menu">
                         <li><a href="https://github.com/angular-ui/angular-google-maps" rel="external" target="_blank" class="link-external"><i class="icon-github-alt"></i> Code</a></li>
@@ -32,35 +30,52 @@
             </ul>
         </div>
     </div>
-</nav>
+</nav> -->
 <body>
-    <div class='container'>
+    <div class='parallax'>
+        <div class='caption'>
+            <span class='border'>Angular Heat</span>
+        </div>
+    </div>
+    <div class='second-span'>
+        <h3 style="text-align:center;">Maps Demo</h3>
+        <p>Use the Interface below to see a live feed of Tweets across the world. The map center will automatically updte to your current location. Data is Visualized as a heatmap showing concentration of current tiwtter activity. Trending hashtags from the sample data set are displayed on the right. You can use the filter displayed on the map to display diffferent sets of data from the sample stream.</p>
+    </div>
+    <div class='third-span'>
         <div class='ui-view'>
-            <div class='page-header'>
-                <h1 class="headline" itemprop="name">Angular Heat</h1>
-                <div class='row'>
-                    <div class='col-md-4'>
-                        <div class='well'>
-                            <p>Testing Look At Our App</p>
-                            <p>Picture Button</p>
-                            <p>Github Link</p>
-                        </div>
-                    </div>
-                        <div class='col-md-8 map'>
-                            <%= yield %>
-                        </div>
-                    <div class='col-md-12'>
-                        <h2 class='page-doc'>Stream of Tweets?</h2>
-                    </div>
-                    <div class = 'col-md-6'>
-                        <h2 class='page-doc'>About</h2>
-                    </div>
-                    <div class = 'col-md-6'>
-                        <h2 class='page-doc'>Contributors</h2>
-                    </div>
-                </div>
+            <div class='container'>
+                <%= yield %>
             </div>
         </div>
     </div>
+    <div class='fourth-span'>
+        <h3 style="text-align:center;">Tweet Stream</h3>
+        <p style="text-align:center;">Below is a sample of the live status updates for our data. These get refreshed everytime the application makes a request to the maps.json data</p>
+        <div class='col-md-12'>
+            <div class='well'>
+                <p>THIS IS A TWEET</p>
+                <p>THIS IS A TWEET</p>
+                <p>THIS IS A TWEET</p>
+                <p>THIS IS A TWEET</p>
+            </div>
+        </div>
+    </div>
+    <!-- <div class='fifth-span'>
+        <h3 style="text-align:center;">Development</h3>
+        <div class = 'col-md-6'>
+            <h2 class='page-doc'>About</h2>
+            <div class='well'>
+
+            </div>
+        </div>
+        <div class = 'col-md-6'>
+            <h2 class='page-doc'>Contributors</h2>
+            <div class='well'>
+                <p>John Estes</p>
+                <p>Michael Mahoney</p>
+                <p>Chris Phillips</p>
+            </div>
+        </div>
+    </div> -->
 </body>
 </html>
