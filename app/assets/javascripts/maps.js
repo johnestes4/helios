@@ -131,19 +131,18 @@
                 console.log("Sorting hashtags")
                 var hashtag_dict = countHashtags($scope.allTweets);
                 var hash_count_tuples = [];
-
                 for (var key in hashtag_dict) hash_count_tuples.push([key, hashtag_dict[key]]);
-
                 hash_count_tuples.sort(function(a, b) {
                     a = a[1];
                     b = b[1];
-
                     return a < b ? -1 : (a > b ? 1 : 0);
                 });
-
-                console.log(hash_count_tuples)
+                $('.hash-one').html(hash_count_tuples[hash_count_tuples.length-1])
+                $('.hash-two').html(hash_count_tuples[hash_count_tuples.length-2])
+                $('.hash-three').html(hash_count_tuples[hash_count_tuples.length-3])
+                $('.hash-four').html(hash_count_tuples[hash_count_tuples.length-4])
+                $('.hash-five').html(hash_count_tuples[hash_count_tuples.length-5])
             },
-
             takePhoto: function() {
                 html2canvas(document.main, {
                     onrendered: function (canvas) {
