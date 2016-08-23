@@ -21,6 +21,7 @@
             update: {method: "PUT"}
         });
         var firstLoad = true;
+
         // vm.data holds all of the tweets in the database
         vm.data = Map.query();
         // Initialize points. $scope.points will hold all of the filtered google maps
@@ -113,7 +114,32 @@
                 populateFilteredTweets($scope, search_term);
                 var layer = document.getElementById("layerInUse");
                 var heatLayer = new createHeatLayer($scope.layerInUse);
-            }
+            },
+
+            serveHashCount: function () {
+                console.log("Sorting hashtags")
+                var hashtag_dict = countHashtags($scope.allTweets);
+                var hash_count_tuples = [];
+
+                for (var key in hashtag_dict) hash_count_tuples.push([key, hashtag_dict[key]]);
+
+                hash_count_tuples.sort(function(a, b) {
+                    a = a[1];
+                    b = b[1];
+
+                    return a < b ? -1 : (a > b ? 1 : 0);
+                });
+
+                console.log(hash_count_tuples)
+            },
+
+            takePhoto: function() {
+                html2canvas(document.main, {
+                    onrendered: function (canvas) {
+                        document.body.appendChild(canvas);
+                    }
+                })
+            },
         };
 
         var onSuccess = function(position) {
@@ -123,7 +149,7 @@
             };
             $scope.$apply();
             console.log($scope.map.center);
-        }
+        };
 
         function onError(error) {
             console.log('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
@@ -143,9 +169,7 @@
     });
 
     function populateFilteredTweets(scope, search_term) {
-        //TODO   On take in of data and/or population of mock data, ensure that all hashtags are toLowerCase
-        //TODO   then apply the same to the filter conditions. Otherwise, a query for '#xss' will return
-        //TODO   no results when '#XSS' is extant.
+      search_term = search_term.toLowerCase();
 
         var filteredTweets = [];
         scope.points = [];
@@ -176,4 +200,27 @@
             scope.points.push(point_obj);
         }
     }
+
+    function countHashtags(all_tweets) {
+        var counts = {}
+        // For each tweet
+        for (var i = 0; i < all_tweets.length; i++) {
+            // For each hashtag
+            for (var j = 0; j < all_tweets[i].hashtag.length; j++) {
+
+                // If the hashtag is in the array, increment it
+                var the_hashtag = all_tweets[i].hashtag[j];
+                if (the_hashtag in counts) {
+                    counts[the_hashtag] += 1;
+
+                // If not, initialize it at 1
+                } else {
+                    counts[the_hashtag] = 1;
+                }
+            }
+        }
+
+        return counts;
+    }
+        
 })();
