@@ -154,10 +154,6 @@
             updateTweets: function(){
 
             },
-
-            updateStatus: function(){
-                console.log($scope.allTweets)
-            }
         };
 
         var onSuccess = function(position) {
@@ -198,7 +194,7 @@
         if (search_term == "") {
             filteredTweets = scope.allTweets;
             // Otherwise, filter the tweets.
-        } else {} else {
+        } else {
             for (var i = 0; i < scope.allTweets.length; i++) {
                 // If the tweet has the given hashtag
                 for (var j = 0; j < scope.allTweets[i].hashtag.length; j++) {
