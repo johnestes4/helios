@@ -193,11 +193,12 @@
         } else {
             for (var i = 0; i < scope.allTweets.length; i++) {
                 // If the tweet has the given hashtag
-                var hashToCheck = scope.allTweets[i].hashtag.toString();
-                if (search_term == hashToCheck.substr(0, search_term.length)) {
+                for (var j = 0; j < scope.allTweets[i].hashtag.length; j++) {
+                  var hashToCheck = scope.allTweets[i].hashtag[j].toString();
+                  if (search_term == hashToCheck.substr(0, search_term.length)) {
                     // Get the coordinates
-                    console.log(scope.allTweets[i]);
                     filteredTweets.push(scope.allTweets[i]);
+                  }
                 }
             }
         }
