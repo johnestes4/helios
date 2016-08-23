@@ -127,6 +127,13 @@
                 var heatLayer = new createHeatLayer($scope.layerInUse);
             },
 
+            statusFilter: function() {
+                var search_term = $("#filter-status-term").val();
+                populateFilteredTweets($scope, search_term);
+                var layer = document.getElementById("layerInUse");
+                var heatLayer = new createHeatLayer($scope.layerInUse);
+            },
+
             serveHashCount: function () {
                 console.log("Sorting hashtags")
                 var hashtag_dict = countHashtags($scope.allTweets);
@@ -202,6 +209,8 @@
             }
         }
 
+
+
         // Create latlong objects with the filtered result
         for (var i = 0; i < filteredTweets.length; i++) {
             // Get the coordinate
@@ -212,6 +221,47 @@
             scope.points.push(point_obj);
         }
     }
+
+
+    function populateFilteredTweetsByStatus(scope, search_term) {
+        search_term = search_term.toLowerCase();
+
+        var filteredTweets = [];
+        scope.points = [];
+
+        // Get rid of leading or trailing whitespace
+        search_term = search_term.trim();
+        // If the search term is empty, we will show all tweets
+        if (search_term == "") {
+            filteredTweets = scope.allTweets;
+            // Otherwise, filter the tweets.
+
+        } else {
+            // For all tweets
+            for (var i = 0; i < scope.allTweets.length; i++) {
+                // If the tweet contains the given text
+                var tweet_status = scope.allTweets[i].status.toString();
+                if (tweet_status.indexOf(search_term) != -1) {
+                    // Get the coordinates
+                    console.log(scope.allTweets[i]);
+                    filteredTweets.push(scope.allTweets[i]);
+                }
+            }
+        }
+
+        // Create latlong objects with the filtered result
+        for (var i = 0; i < filteredTweets.length; i++) {
+            // Get the coordinate
+            var lat = filteredTweets[i].coordinates[0];
+            var long = filteredTweets[i].coordinates[1];
+            var point_obj = new google.maps.LatLng(lat, long);
+            // Push the new point object into scope.points
+            scope.points.push(point_obj);
+        }
+    }
+
+
+
     function countHashtags(all_tweets) {
         var counts = {}
         // For each tweet
