@@ -138,7 +138,7 @@
 
             statusFilter: function() {
                 var search_term = $("#filter-status-term").val();
-                populateFilteredTweets($scope, search_term);
+                populateFilteredTweetsByStatus($scope, search_term);
                 var layer = document.getElementById("layerInUse");
                 var heatLayer = new createHeatLayer($scope.layerInUse);
             },
@@ -211,8 +211,6 @@
                 }
             }
         }
-
-
 
         // Create latlong objects with the filtered result
         for (var i = 0; i < filteredTweets.length; i++) {
