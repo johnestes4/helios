@@ -177,7 +177,6 @@
                 }
             }
         }
-        console.log(filteredTweets)
         // Create latlong objects with the filtered result
         for (var i = 0; i < filteredTweets.length; i++) {
             // Get the coordinate
