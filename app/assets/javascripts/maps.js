@@ -137,11 +137,11 @@
                     b = b[1];
                     return a < b ? -1 : (a > b ? 1 : 0);
                 });
-                $('.hash-one').html(hash_count_tuples[hash_count_tuples.length-1])
-                $('.hash-two').html(hash_count_tuples[hash_count_tuples.length-2])
-                $('.hash-three').html(hash_count_tuples[hash_count_tuples.length-3])
-                $('.hash-four').html(hash_count_tuples[hash_count_tuples.length-4])
-                $('.hash-five').html(hash_count_tuples[hash_count_tuples.length-5])
+                $('.hash-one').html('#' + hash_count_tuples[hash_count_tuples.length-1][0])
+                $('.hash-two').html('#' + hash_count_tuples[hash_count_tuples.length-2][0])
+                $('.hash-three').html('#' + hash_count_tuples[hash_count_tuples.length-3][0])
+                $('.hash-four').html('#' + hash_count_tuples[hash_count_tuples.length-4][0])
+                $('.hash-five').html('#' + hash_count_tuples[hash_count_tuples.length-5][0])
             },
             takePhoto: function() {
                 html2canvas(document.main, {
