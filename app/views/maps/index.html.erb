@@ -16,6 +16,7 @@
     <div class='col-md-10 map'>
         <div id="floating-panel">
             <input ng-keyup="map.processFilter()" type="text" id="filter-search-term" class="panel-field-wide" placeholder="Filter by hashtag">
+            <input ng-keyup="map.statusFilter()" type="text" id="filter-search-term" class="panel-field-wide" placeholder="Filter by Status">
             <button class="panel-button" data-ng-click="map.toggleHeat()">Toggle Heatmap</button>
             <button class="panel-button" data-ng-click="map.changeGradient()">Change Gradient</button>
             <button class="panel-button" data-ng-click="Map.query()">Update Tweets</button>
