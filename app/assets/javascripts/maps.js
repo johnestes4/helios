@@ -63,7 +63,6 @@
             opacity: .6,
 
             heatLayerCallback: function (layer) {
-
                 populateFilteredTweets($scope, "");
                 console.log("scope.points from outside fn");
                 $scope.layerInUse = layer;
@@ -183,13 +182,16 @@
         } else {
             for (var i = 0; i < scope.allTweets.length; i++) {
                 // If the tweet has the given hashtag
-                if (scope.allTweets[i].hashtag.indexOf(search_term) != -1) {
+                var hashToCheck = scope.allTweets[i].hashtag.toString();
+                if (search_term == hashToCheck.substr(0, search_term.length)) {
                     // Get the coordinates
+                    console.log(scope.allTweets[i]);
                     filteredTweets.push(scope.allTweets[i]);
                 }
             }
         }
         console.log(filteredTweets)
+
         // Create latlong objects with the filtered result
         for (var i = 0; i < filteredTweets.length; i++) {
             // Get the coordinate
@@ -222,5 +224,5 @@
 
         return counts;
     }
-        
+
 })();
