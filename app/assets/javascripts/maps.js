@@ -187,12 +187,11 @@
         if (search_term == "") {
             filteredTweets = scope.allTweets;
             // Otherwise, filter the tweets.
-        } else {
+        } else {} else {
             for (var i = 0; i < scope.allTweets.length; i++) {
                 // If the tweet has the given hashtag
-                var tweetAsArray = scope.allTweets[i].status.toString().split(" ");
-                for (var j = 0; j < tweetAsArray.length; j++) {
-                  var hashToCheck = tweetAsArray[j].toString();
+                for (var j = 0; j < scope.allTweets[i].hashtag.length; j++) {
+                  var hashToCheck = scope.allTweets[i].hashtag[j].toString();
                   if (search_term == hashToCheck.substr(0, search_term.length)) {
                     // Get the coordinates
                     filteredTweets.push(scope.allTweets[i]);
