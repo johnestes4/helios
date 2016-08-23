@@ -24,8 +24,7 @@ namespace :twitter do
               puts status.geo.latitude.to_s, status.geo.longitude.to_s
 
 
-              Map.create(coordinates: coordinates, hashtag: hashtag_list)
-
+              Map.create(coordinates: coordinates, hashtag: hashtag_list, status: text)
 
             end
         end
