@@ -66,6 +66,7 @@
     text-align:center;
     padding:30px 80px;
     text-align: justify;
+    margin-top: .6em;
 }
 
 .fifth-span{
@@ -129,5 +130,13 @@
 }
 
 .tweet-box{
-    margin-top: 2em;
+    margin-top: .5em;
+}
+
+.button-container{
+    text-align:center;
+}
+
+.tweet-button{
+    vertical-align: middle;
 }

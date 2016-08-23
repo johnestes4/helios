@@ -16,7 +16,7 @@
     <div class='col-md-10 map'>
         <div id="floating-panel">
             <input ng-keyup="map.processFilter()" type="text" id="filter-search-term" class="panel-field-wide" placeholder="Filter by hashtag">
-            <input ng-keyup="map.statusFilter()" type="text" id="filter-search-term" class="panel-field-wide" placeholder="Filter by Status">
+            <input ng-keyup="map.statusFilter()" type="text" id="filter-status-term" class="panel-field-wide" placeholder="Filter by Status">
             <button class="panel-button" data-ng-click="map.toggleHeat()">Toggle Heatmap</button>
             <button class="panel-button" data-ng-click="map.changeGradient()">Change Gradient</button>
             <button class="panel-button" data-ng-click="Map.query()">Update Tweets</button>
@@ -32,18 +32,21 @@
         <ui-gmap-google-map center='map.center' zoom='map.zoom'>
             <ui-gmap-layer namespace="visualization" type="HeatmapLayer" radius = "map.radius" show="map.showHeat" onCreated="map.heatLayerCallback" id="layerInUse"></ui-gmap-layer>
         </ui-gmap-google-map>
-    </main>
     </div>
 </div>
 <div class='fourth-span'>
     <h3 style="text-align:center;">Tweet Stream</h3>
     <p style="text-align:center;">Below is a sample of the live status updates for our data. These get refreshed everytime the application makes a request to the maps.json data</p>
+    <div class='button-container'>
+        <button class='tweet-button' data-ng-click="map.updateStatus()">Update Tweets</button>
+    </div>
 </div>
 <div class='col-md-12 tweet-box'>
     <div class='well'>
-        <p>THIS IS A TWEET</p>
-        <p>THIS IS A TWEET</p>
-        <p>THIS IS A TWEET</p>
-        <p>THIS IS A TWEET</p>
+        <p class='status-one'>THIS IS A TWEET</p>
+        <p class='status-two'>THIS IS A TWEET</p>
+        <p class='status-three'>THIS IS A TWEET</p>
+        <p class='status-four'>THIS IS A TWEET</p>
     </div>
 </div>
+</main>

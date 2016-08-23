@@ -144,6 +144,10 @@
                 $('.hash-five').html('#' + hash_count_tuples[hash_count_tuples.length-5][0])
             },
 
+            updateTweets: function(){
+
+            },
+
             updateStatus: function(){
                 console.log($scope.allTweets)
             }
