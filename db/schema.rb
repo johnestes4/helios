@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20160820192824) do
   create_table "maps", force: :cascade do |t|
     t.text     "coordinates", default: [],              array: true
     t.text     "hashtag",     default: [],              array: true
+    t.text     "status"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
