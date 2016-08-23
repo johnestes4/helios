@@ -143,13 +143,10 @@
                 $('.hash-four').html('#' + hash_count_tuples[hash_count_tuples.length-4][0])
                 $('.hash-five').html('#' + hash_count_tuples[hash_count_tuples.length-5][0])
             },
-            takePhoto: function() {
-                html2canvas(document.main, {
-                    onrendered: function (canvas) {
-                        document.body.appendChild(canvas);
-                    }
-                })
-            },
+
+            updateStatus: function(){
+                console.log($scope.allTweets)
+            }
         };
 
         var onSuccess = function(position) {
