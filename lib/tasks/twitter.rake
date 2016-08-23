@@ -17,13 +17,15 @@ namespace :twitter do
               tweet_count += 1
               puts "-----------------------------------------------------------------" + tweet_count.to_s
               text = status.text
+              puts text
               hashtag_list = []
-              status.hashtags.each { |hashtag| hashtag_list.push(hashtag.text) }
+              status.hashtags.each { |hashtag| hashtag_list.push(hashtag.text.downcase) }
               coordinates = [status.geo.latitude.to_s, status.geo.longitude.to_s]
+              puts status.geo.latitude.to_s, status.geo.longitude.to_s
+
 
               Map.create(coordinates: coordinates, hashtag: hashtag_list)
 
-              puts status.geo.latitude.to_s, status.geo.longitude.to_s
 
             end
         end
