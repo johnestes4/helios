@@ -46,7 +46,7 @@
     color: #777;
     background-color:white;
     text-align:center;
-    padding:50px 80px;
+    padding:30px 80px;
     text-align: justify;
 }
 
@@ -102,6 +102,7 @@
 .map {
     height: 500px;
     margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 .well{
@@ -125,4 +126,8 @@
 .lead{
     font-size: 30px;
     font-weight: bold;
+}
+
+.tweet-box{
+    margin-top: 2em;
 }
