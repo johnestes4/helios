@@ -14,37 +14,89 @@
  *= require_layout
  */
 
- body{
-     padding-top: 10px;
+ .parallax{
      background: url("http://digitalresult.com/wp-content/uploads/2015/09/earth-desktop-wallpapers-8.jpeg");
-     background-position: center center;
-     background-repeat: no-repeat;
      background-attachment: fixed;
+     background-position: center;
+     background-repeat: no-repeat;
      background-size: cover;
-     background-color: #c4c4c4;
+     height: 600px;
  }
- .navbar-nav > li > a {
-     padding-top:5px !important;
-     padding-bottom:5px !important;}
+
+ .caption {
+    position: absolute;
+    left: 0;
+    top: 33%;
+    width: 100%;
+    text-align: center;
+    color: #000;
+}
+
+.caption span.border {
+    background-color: #111;
+    color: #fff;
+    padding: 18px;
+    font-size: 25px;
+    letter-spacing: 10px;
+}
+
+.second-span{
+    color: #777;
+    background-color:white;
+    text-align:center;
+    padding:50px 80px;
+    text-align: justify;
+}
+
+.third-span{
+    background: url("https://upload.wikimedia.org/wikipedia/commons/0/08/Embalse_de_la_Vi%C3%B1uela,_M%C3%A1laga,_view_from_a_plane,_Andalucia,_Spain.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 550px;
+    margin-top: 1em;
+}
+
+.fourth-span{
+    color: #777;
+    background-color:white;
+    text-align:center;
+    padding:30px 80px;
+    text-align: justify;
+}
+
+.fifth-span{
+    margin-top: 4em;
+}
+
 .navbar {
-    min-height:32px !important}
+    min-height:32px !important;
+    margin-bottom: 0 !important;
+}
  .container{
-     width:970px;
- }
+     margin-top: 1em;
+
+}
+
+.hashtags{
+    margin-top: 1em;
+}
  .headline{
+     padding top: 20em;
+     margin-top: 0 !important;
      text-align: center;
      font-size: 60px;
-     margin-bottom: 1em;
      color: #D2C706
  }
  .row{
-     margin-left: -15px;
-     margin-right: -15px;
      height: 600px;
+     width: 1200px;
 }
 
 .map {
-    height: 100%;
+    height: 500px;
+    margin-top: 1em;
 }
 
 .well{
