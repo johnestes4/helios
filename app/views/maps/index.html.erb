@@ -1,6 +1,5 @@
 <%= stylesheet_link_tag "maps", property: "stylesheet" %>
 <%= javascript_include_tag "maps" %>
-<div class='container'>
 <div class="container" data-ng-app="heatMap">
     <main data-ng-controller="maps_controller as vm">
     <div class='col-md-2 hashtags'>
@@ -35,17 +34,15 @@
     </main>
     </div>
 </div>
-</div>
 <div class='fourth-span'>
-        <h3 style="text-align:center;">Tweet Stream</h3>
-        <p style="text-align:center;">Below is a sample of the live status updates for our data. These get refreshed everytime the application makes a request to the maps.json data</p>
-        <div class='col-md-12'>
-            <div class='well'>
-                <p>THIS IS A TWEET</p>
-                <p>THIS IS A TWEET</p>
-                <p>THIS IS A TWEET</p>
-                <p>THIS IS A TWEET</p>
-            </div>
-        </div>
+    <h3 style="text-align:center;">Tweet Stream</h3>
+    <p style="text-align:center;">Below is a sample of the live status updates for our data. These get refreshed everytime the application makes a request to the maps.json data</p>
+</div>
+<div class='col-md-12 tweet-box'>
+    <div class='well'>
+        <p>THIS IS A TWEET</p>
+        <p>THIS IS A TWEET</p>
+        <p>THIS IS A TWEET</p>
+        <p>THIS IS A TWEET</p>
     </div>
 </div>
