@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag "maps", property: "stylesheet" %>
 <%= javascript_include_tag "maps" %>
 <div class="container" data-ng-app="heatMap">
-    <main data-ng-controller="maps_controller as vm">
+  <main data-ng-controller="maps_controller as vm">
     <div class='col-md-2 hashtags'>
         <div class='well'>
             <p class='lead'>Trending HashTags</p>
@@ -33,20 +33,20 @@
             <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="map.showHeat" onCreated="map.heatLayerCallback" id="layerInUse"></ui-gmap-layer>
         </ui-gmap-google-map>
     </div>
-</div>
-<div class='fourth-span'>
-    <h3 style="text-align:center;">Tweet Stream</h3>
-    <p style="text-align:center;">Below is a sample of the live status updates for our data. These get refreshed everytime the application makes a request to the maps.json data</p>
-    <div class='button-container'>
-        <button class='tweet-button' data-ng-click="map.updateStatus()">Update Tweets</button>
+    <div class='fourth-span'>
+        <h3 style="text-align:center;">Tweet Stream</h3>
+        <p style="text-align:center;">Below is a sample of the live status updates for our data. These get refreshed everytime the application makes a request to the maps.json data</p>
+        <div class='button-container'>
+            <button class='tweet-button' data-ng-click="map.updateStatus()">Update Tweets</button>
+        </div>
     </div>
-</div>
-<div class='col-md-12 tweet-box'>
-    <div class='well'>
-        <p class='status-one'>THIS IS A TWEET</p>
-        <p class='status-two'>THIS IS A TWEET</p>
-        <p class='status-three'>THIS IS A TWEET</p>
-        <p class='status-four'>THIS IS A TWEET</p>
+    <div class='col-md-12 tweet-box'>
+        <div class='well'>
+            <p class='status-one'>THIS IS A TWEET</p>
+            <p class='status-two'>THIS IS A TWEET</p>
+            <p class='status-three'>THIS IS A TWEET</p>
+            <p class='status-four'>THIS IS A TWEET</p>
+        </div>
     </div>
+  </main>
 </div>
-</main>
