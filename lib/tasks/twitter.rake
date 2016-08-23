@@ -26,7 +26,6 @@ namespace :twitter do
 
               Map.create(coordinates: coordinates, hashtag: hashtag_list, status: text)
 
-
             end
         end
     end
