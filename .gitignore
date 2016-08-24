@@ -18,6 +18,3 @@
 
 # Ignore application configuration
 /config/application.yml
-
-# Ignore twitter rake file
-/lib/tasks/twitter.rake

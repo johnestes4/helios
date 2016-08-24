@@ -130,6 +130,7 @@
             },
 
             processFilter: function() {
+              console.log("Process filter called")
                 var search_term = $("#filter-search-term").val();
                 populateFilteredTweets($scope, search_term);
                 var layer = document.getElementById("layerInUse");
@@ -191,7 +192,7 @@
 
     .config(function(uiGmapGoogleMapApiProvider) {
         uiGmapGoogleMapApiProvider.configure({
-            key: "<%= ENV['google_api_key'] %>",
+            key: "AIzaSyAolrzoKDQv121tNCT989A4ndkHTVfiqu0",
             v: '3.24', //defaults to latest 3.X anyhow
             libraries: 'weather,geometry,visualization'
         });

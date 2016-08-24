@@ -20,6 +20,7 @@
             <button class="panel-button" data-ng-click="map.toggleHeat()">Toggle Heatmap</button>
             <button class="panel-button" data-ng-click="map.changeGradient()">Change Gradient</button>
             <button class='panel-button' data-ng-click="map.updateMom()">Update Tweets</button>
+            <button class="hidden" id="hidden-filter" ng-click="map.processFilter()"></button>
             <div class="field-container">
                 <div class="field-desc">Radius:</div>
                 <input ng-change="map.changeRadius()" ng-model="map.radius" type="number" max="100" id="new-radius" class="panel-field">
@@ -32,6 +33,16 @@
         <ui-gmap-google-map center='map.center' zoom='map.zoom'>
             <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="map.showHeat" onCreated="map.heatLayerCallback" id="layerInUse"></ui-gmap-layer>
         </ui-gmap-google-map>
+
+      <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+          the_interval = setInterval(function () {
+            $("#hidden-filter").click();
+            clearInterval(the_interval);
+          }, 3000);
+//          $("#hidden-filter").click()
+        })
+      </script>
     </div>
     <h3 style="text-align:center;">Tweet Stream</h3>
     <p style="text-align:center;">Below is a sample of the live status updates for our data. These get refreshed everytime the application makes a request to the maps.json data. Click Update Tweets on the map to refresh them.</p>
