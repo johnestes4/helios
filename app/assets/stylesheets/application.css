@@ -35,6 +35,7 @@
     background-color: #111;
     color: #fff;
     padding: 18px;
+    padding-left: 23px;
     font-size: 25px;
     letter-spacing: 10px;
     text-align: center;
@@ -69,7 +70,7 @@
 }
 
 .fifth-span{
-    margin-top: 4em;
+    text-align: center;
 }
 
 .navbar {
@@ -152,10 +153,23 @@
 }
 .status-button{
     position:relative;
-top:50%;
-left:44%;
+    top:50%;
+    left:44%;
 }
 
 .status-box{
-    height: 200px;
+    height: 180px;
+}
+
+.tweet-headline{
+    color: #777;
+    text-align: center;
+}
+
+.map-container{
+    width: 100% !important;
+}
+
+.dev-headline{
+    color: #777;
 }

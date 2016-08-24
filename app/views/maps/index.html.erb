@@ -1,60 +1,59 @@
 <%= stylesheet_link_tag "maps", property: "stylesheet" %>
 <%= javascript_include_tag "maps" %>
-<div class="container" data-ng-app="heatMap">
+<div class="map-container" data-ng-app="heatMap">
     <main data-ng-controller="maps_controller as vm">
-    <div class='col-md-2 hashtags'>
-        <div class='well'>
-            <p class='lead'>Trending HashTags</p>
-            <p class='hash-one tag'></p>
-            <p class='hash-two tag'></p>
-            <p class='hash-three tag'></p>
-            <p class='hash-four tag'></p>
-            <p class='hash-five tag'></p>
-            <button class='hashtag-button' data-ng-click="map.serveHashCount()">Update Tags</button>
-        </div>
-    </div>
-    <div class='col-md-10 map'>
-        <div id="floating-panel">
-            <input ng-keyup="map.processFilter()" type="text" id="filter-search-term" class="panel-field-wide" placeholder="Filter by hashtag">
-            <input ng-keyup="map.statusFilter()" type="text" id="filter-status-term" class="panel-field-wide" placeholder="Filter by Status">
-            <button class="panel-button" data-ng-click="map.toggleHeat()">Toggle Heatmap</button>
-            <button class="panel-button" data-ng-click="map.changeGradient()">Change Gradient</button>
-            <button class='panel-button' data-ng-click="map.updateMom()">Update Tweets</button>
-            <button class="hidden" id="hidden-filter" ng-click="map.processFilter()"></button>
-            <div class="field-container">
-                <div class="field-desc">Radius:</div>
-                <input ng-change="map.changeRadius()" ng-model="map.radius" type="number" max="100" id="new-radius" class="panel-field">
+        <div class='third-span'>
+            <div class='col-md-2 hashtags'>
+                <div class='well'>
+                    <p class='lead'>Trending HashTags</p>
+                    <p class='hash-one tag'></p>
+                    <p class='hash-two tag'></p>
+                    <p class='hash-three tag'></p>
+                    <p class='hash-four tag'></p>
+                    <p class='hash-five tag'></p>
+                    <button class='hashtag-button' data-ng-click="map.serveHashCount()">Update Tags</button>
+                </div>
             </div>
-            <div class="field-container">
-                <div class="field-desc">Opacity:</div>
-                <input ng-change="map.changeOpacity()" ng-model="map.opacity" type="number" min="0" max="1" step="0.1" class="panel-field">
-            </div>
-        </div>
-        <ui-gmap-google-map center='map.center' zoom='map.zoom'>
-            <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="map.showHeat" onCreated="map.heatLayerCallback" id="layerInUse"></ui-gmap-layer>
-        </ui-gmap-google-map>
-
-      <script type="text/javascript" charset="utf-8">
-        $(document).ready(function () {
-          the_interval = setInterval(function () {
-            $("#hidden-filter").click();
-            clearInterval(the_interval);
-          }, 3000);
-//          $("#hidden-filter").click()
-        })
-      </script>
-    </div>
-    <h3 style="text-align:center;">Tweet Stream</h3>
-    <p style="text-align:center;">Below is a sample of the live status updates for our data. These get refreshed everytime the application makes a request to the maps.json data. Click Update Tweets on the map to refresh them.</p>
-    <containter class='status-button-box'>
-        <button class='status-button' data-ng-click="map.updateMom()">Update Status</button>
-    </containter>
-    <div class='col-md-12 tweet-box'>
-        <div class='well status-box'>
-            <div ng-repeat='tweet in allTweets | orderBy:"-id" | limitTo:5  '>
-                <random-bill-murray-img tweet='tweet'/>
+            <div class='col-md-9 map'>
+                <div id="floating-panel">
+                    <input ng-keyup="map.processFilter()" type="text" id="filter-search-term" class="panel-field-wide" placeholder="Filter by hashtag">
+                    <input ng-keyup="map.statusFilter()" type="text" id="filter-status-term" class="panel-field-wide" placeholder="Filter by Status">
+                    <button class="panel-button" data-ng-click="map.toggleHeat()">Toggle Heatmap</button>
+                    <button class="panel-button" data-ng-click="map.changeGradient()">Change Gradient</button>
+                    <button class='panel-button' data-ng-click="map.updateMom()">Update Tweets</button>
+                    <button class="hidden" id="hidden-filter" ng-click="map.processFilter()"></button>
+                    <div class="field-container">
+                        <div class="field-desc">Radius:</div>
+                        <input ng-change="map.changeRadius()" ng-model="map.radius" type="number" max="100" id="new-radius" class="panel-field">
+                    </div>
+                    <div class="field-container">
+                        <div class="field-desc">Opacity:</div>
+                        <input ng-change="map.changeOpacity()" ng-model="map.opacity" type="number" min="0" max="1" step="0.1" class="panel-field">
+                    </div>
+                </div>
+                <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+                    <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="map.showHeat" onCreated="map.heatLayerCallback" id="layerInUse"></ui-gmap-layer>
+                </ui-gmap-google-map>
+                <script type="text/javascript" charset="utf-8">
+                    $(document).ready(function () {
+                        the_interval = setInterval(function () {
+                            $("#hidden-filter").click();
+                            clearInterval(the_interval);
+                        }, 3000);
+                    })
+                </script>
             </div>
         </div>
-    </div>
+        <div class='second-span'>
+            <h3 class='tweet-headline' style="text-align:center;">Tweet Stream</h3>
+            <p class='tweet-headline' style="text-align:center;">Below is a sample of the live status updates for our data. These get refreshed everytime the application makes a request to the maps.json data. Click Update Tweets on the map to refresh them.</p>
+        </div>
+        <div class='col-md-8 col-md-offset-2 tweet-box'>
+            <div class='well status-box'>
+                <div ng-repeat='tweet in allTweets | orderBy:"-id" | limitTo:5  '>
+                    <random-bill-murray-img tweet='tweet'/>
+                </div>
+            </div>
+        </div>
     </main>
 </div>
