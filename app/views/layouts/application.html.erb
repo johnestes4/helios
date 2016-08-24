@@ -1,69 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Helio</title>
+<head>
+    <title>Helios</title>
     <%= csrf_meta_tags %>
     <link rel="shortcut icon" href="https://cdn2.iconfinder.com/data/icons/crazy-paparazzi-collection-svg/100/Noun_Project_100Icon_10px_grid_2-97-128.png">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-  </head>
-  <!-- <nav class="navbar navbar-inverse" role="navigation">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-    </div>
-    <div class="container">
-        <div class="collapse navbar-collapse" id="navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li ui-sref-active="active" class="active"><a ui-sref="home" rel="external" href="#!/">Home</a></li>
-                <li class="dropdown">
-                    <ul class="dropdown-menu">
-                        <li><a href="https://github.com/angular-ui/angular-google-maps" rel="external" target="_blank" class="link-external"><i class="icon-github-alt"></i> Code</a></li>
-                        <li><a href="https://developers.google.com/maps/documentation/javascript/" rel="external" target="_blank" class="link-external"><i class="icon-question-sign"></i> Google Maps Javascript API v3</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav> -->
+</head>
 <body>
     <div class='parallax'>
         <div class='caption'>
-            <span class='border'>HELIO</span>
+            <span class='border'>HELIOS</span>
         </div>
     </div>
     <div class='second-span'>
         <h3 style="text-align:center;">Maps Demo</h3>
-        <p>The Helio Application allows you to use the interface below to see a live feed of Tweets across the world as a heat map. The map center will automatically update to your current location. Data is Visualized as a heatmap showing concentration of current twitter activity. Trending hashtags from the sample data set are displayed on the left at the click of a button. You can use the two filters displayed on the map interface to display diffferent sets of data from the sample stream by hashtag or status.</p>
+        <p>The Helios Application allows you to use the interface below to see a live feed of Tweets across the world as a heat map. The map center will automatically update to your current location. Data is Visualized as a heatmap showing concentration of current twitter activity. Trending hashtags from the sample data set are displayed on the left at the click of a button. You can use the two filters displayed on the map interface to display diffferent sets of data from the sample stream by hashtag or status.</p>
     </div>
-    <div class='third-span'>
-        <div class='ui-view'>
-            <div class='container'>
-                <%= yield %>
-            </div>
-        </div>
+    <%= yield %>
     </div>
-    <!-- <div class='fifth-span'>
-        <h3 style="text-align:center;">Development</h3>
-        <div class = 'col-md-6'>
-            <h2 class='page-doc'>About</h2>
-            <div class='well'>
-
-            </div>
-        </div>
-        <div class = 'col-md-6'>
-            <h2 class='page-doc'>Contributors</h2>
-            <div class='well'>
-                <p>John Estes</p>
-                <p>Michael Mahoney</p>
-                <p>Chris Phillips</p>
-            </div>
-        </div>
-    </div> -->
+    <div class='fifth-span col-md-12'>
+        <h1 class='dev-headline'>Development</h1>
+    </div>
 </body>
 </html>
