@@ -10,7 +10,7 @@
             <p class='hash-three tag'></p>
             <p class='hash-four tag'></p>
             <p class='hash-five tag'></p>
-            <button data-ng-click="map.serveHashCount()">Update Tags</button>
+            <button class='hashtag-button' data-ng-click="map.serveHashCount()">Update Tags</button>
         </div>
     </div>
     <div class='col-md-10 map'>
@@ -33,17 +33,17 @@
             <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="map.showHeat" onCreated="map.heatLayerCallback" id="layerInUse"></ui-gmap-layer>
         </ui-gmap-google-map>
     </div>
-</div>
-<div class='fourth-span'>
     <h3 style="text-align:center;">Tweet Stream</h3>
     <p style="text-align:center;">Below is a sample of the live status updates for our data. These get refreshed everytime the application makes a request to the maps.json data. Click Update Tweets on the map to refresh them.</p>
-</div>
-<div class='col-md-12 tweet-box'>
-    <div class='well'>
-        <p class='status-one'></p>
-        <p class='status-two'></p>
-        <p class='status-three'></p>
-        <p class='status-four'></p>
+    <containter class='status-button-box'>
+        <button class='status-button' data-ng-click="map.updateMom()">Update Status</button>
+    </containter>
+    <div class='col-md-12 tweet-box'>
+        <div class='well status-box'>
+            <div ng-repeat='tweet in allTweets | orderBy:"-id" | limitTo:5  '>
+                <random-bill-murray-img tweet='tweet'/>
+            </div>
+        </div>
     </div>
+    </main>
 </div>
-</main>
