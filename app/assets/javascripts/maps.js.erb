@@ -14,14 +14,13 @@
         "ngResource",
         'uiGmapgoogle-maps'
     ])
-    .controller("maps_controller", function($scope, uiGmapGoogleMapApi, $resource, EnvConfigurationFactory) {
+    .controller("maps_controller", function($scope, uiGmapGoogleMapApi, $resource) {
         var vm = this;
         var heat;
         var Map = $resource("/maps.json", {}, {
             update: {method: "PUT"}
         });
         var firstLoad = true;
-        var googleKey = EnvConfigurationFactory.getMySecretKey()
         console.log(googleKey);
 
         // vm.data holds all of the tweets in the database
