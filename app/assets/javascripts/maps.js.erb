@@ -14,7 +14,7 @@
         "ngResource",
         'uiGmapgoogle-maps'
     ])
-    .controller("maps_controller",['$scope', 'uiGmapGoogleMapApi', '$resource', function helloWorld($scope, uiGmapGoogleMapApi, $resource) {
+    .controller("maps_controller",['$scope', 'uiGmapGoogleMapApi', '$resource', function ($scope, uiGmapGoogleMapApi, $resource) {
         var vm = this;
         var heat;
         var Map = $resource("/maps.json", {}, {
