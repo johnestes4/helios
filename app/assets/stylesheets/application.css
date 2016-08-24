@@ -13,7 +13,6 @@
  *= require_self
  *= require_layout
  */
-
  .parallax{
      background: url("http://digitalresult.com/wp-content/uploads/2015/09/earth-desktop-wallpapers-8.jpeg");
      background-attachment: fixed;
@@ -88,14 +87,14 @@
 .hashtags{
     margin-top: 1em;
 }
- .headline{
-     padding top: 20em;
-     margin-top: 0 !important;
-     text-align: center;
-     font-size: 60px;
-     color: #D2C706
- }
- .row{
+.headline{
+    padding-top: 20em;
+    margin-top: 0 !important;
+    text-align: center;
+    font-size: 60px;
+    color: #D2C706;
+}
+.row{
      height: 600px;
      width: 1200px;
 }
