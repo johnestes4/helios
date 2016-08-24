@@ -178,6 +178,15 @@
 
         });
     })
+    .directive("randomBillMurrayImg", function(){
+        return {
+            template: '<p>{{tweet.status}}</p>',
+            scope: {
+                tweet:'='
+            },
+            restrict: 'E',
+        }
+    })
 
     .config(function(uiGmapGoogleMapApiProvider) {
         uiGmapGoogleMapApiProvider.configure({

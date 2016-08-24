@@ -140,3 +140,23 @@
 .tweet-button{
     vertical-align: middle;
 }
+
+#floating-panel{
+    margin-top: 15px !important;
+}
+
+.hashtag-button{
+    color: grey;
+}
+.status-button-box{
+    text-align: center;
+}
+.status-button{
+    position:relative;
+top:50%;
+left:44%;
+}
+
+.status-box{
+    height: 200px;
+}
