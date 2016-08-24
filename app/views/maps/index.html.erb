@@ -21,6 +21,7 @@
             <button class="panel-button" data-ng-click="map.changeGradient()">Change Gradient</button>
             <button class='panel-button' data-ng-click="map.updateMom()">Update Tweets</button>
             <button class="hidden" id="hidden-filter" ng-click="map.processFilter()"></button>
+            <button class="hidden" id="hidden-refresh" ng-click="map.refreshMap()"></button>
             <div class="field-container">
                 <div class="field-desc">Radius:</div>
                 <input ng-change="map.changeRadius()" ng-model="map.radius" type="number" max="100" id="new-radius" class="panel-field">
@@ -36,11 +37,18 @@
 
       <script type="text/javascript" charset="utf-8">
         $(document).ready(function () {
+          var first = true;
+
           the_interval = setInterval(function () {
-            $("#hidden-filter").click();
-            clearInterval(the_interval);
-          }, 3000);
-//          $("#hidden-filter").click()
+            if (first == true) {
+              $("#hidden-filter").click();
+            } else {
+              $("#hidden-refresh").click();
+            }
+
+//            clearInterval(the_interval);
+          }, 5000);
+
         })
       </script>
     </div>

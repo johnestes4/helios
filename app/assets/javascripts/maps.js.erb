@@ -35,8 +35,31 @@
             var Map = $resource("/maps.json", {}, {
                 update: {method: "PUT"}
             });
+
+            // Get the new tweets number of previous tweets
+            var previousLength = $scope.allTweets.length
             $scope.allTweets = Map.query();
+
+            // Get only the new tweets
+            var newTweets = $scope.allTweets.slice(previousLength);
+
+            // Put the new tweets into $scope.points
+            for (var i = 0; i < newTweets; i++) {
+              // Get the coordinate
+              var lat = newTweets[i].coordinates[0];
+              var long = newTweets[i].coordinates[1];
+              var point_obj = new google.maps.LatLng(lat, long);
+              // Push the new point object into scope.points
+              $scope.points.push(point_obj);
+            }
+
+            var layer = document.getElementById("layerInUse");
+            var heatLayer = new createHeatLayer($scope.layerInUse);
+
+
             console.log('updated')
+
+
         }, 10000);
         $scope.allTweets = Map.query();
         // Returns the full array of google maps latlng objects being displayed
@@ -119,6 +142,10 @@
                     'rgba(255, 0, 0, 1)'
                 ]
                 heat.set('gradient', heat.get('gradient') ? null : gradient);
+            },
+            refreshMap: function() {
+              var layer = document.getElementById("layerInUse");
+              var heatLayer = new createHeatLayer($scope.layerInUse);
             },
 
             changeRadius: function() {

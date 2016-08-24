@@ -2,8 +2,8 @@ namespace :twitter do
     desc "Opens Tweet Stream connection and scapes to DB"
     task scrape: :environment do
         TweetStream.configure do |config|
-            config.consumer_key       = 'r4HLs80SqfP89RBHDTy6nXPyH'
-            config.consumer_secret    = 'Nxi7Ug0zK9WXsjDBnCREZKIw0SwC6qNtN2yhY9ZFv1WpgifBpT'
+            config.consumer_key       = 'SHiheW5931hd2CLtufpKrbWcJ'
+            config.consumer_secret    = 'vsL9ds3RiEYuG89FqPLq1LDS93NLG4WP6vq1QAuZPJb74DMwbC'
             config.oauth_token        = '375796206-snaaskLlUfipHuyt1VsM552tJla7HD9JVZfG7MeG'
             config.oauth_token_secret = 'Xr5g9gMjBAffqhOVuukIefPeLojGO6dU7sRitQrQ5ueGn'
             config.auth_method        = :oauth
@@ -15,6 +15,8 @@ namespace :twitter do
         # TweetStream::Client.new.filter() do |status|
 
         TweetStream::Client.new.locations([-180,-90,180,90]) do |status|
+            sleep 1
+
             # If the tweet has lat/long attatched to it
             if status.geo.longitude.to_s != ""
               tweet_count += 1
