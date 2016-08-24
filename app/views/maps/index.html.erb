@@ -20,9 +20,7 @@
             <button class="panel-button" data-ng-click="map.toggleHeat()">Toggle Heatmap</button>
             <button class="panel-button" data-ng-click="map.changeGradient()">Change Gradient</button>
             <button class='panel-button' data-ng-click="map.updateMom()">Update Tweets</button>
-            <button class="hidden" id="hidden-hashtag-filter" ng-click="map.processFilter()"></button>
-            <button class="hidden" id="hidden-status-filter" ng-click="map.statusFilter()"></button>
-            <button class="hidden" id="hidden-refresh" ng-click="map.refreshMap()"></button>
+            <button class="hidden" id="hidden-filter" ng-click="map.processFilter()"></button>
             <div class="field-container">
                 <div class="field-desc">Radius:</div>
                 <input ng-change="map.changeRadius()" ng-model="map.radius" type="number" max="100" id="new-radius" class="panel-field">
@@ -38,37 +36,14 @@
 
       <script type="text/javascript" charset="utf-8">
         $(document).ready(function () {
-          var first = true;
 
+          $()
           the_interval = setInterval(function () {
-            if (first == true) {
-              // If on the first run through
-              $("#hidden-filter").click();
-            } else {
-              // After the first run,
+            $("#hidden-filter").click();
 
-              // If both search fields are empty
-              if ($("#filter-search-term").val() == "" && $("#filter-status-term").val() == "") {
-                // Request a refresh of map
-                $("#hidden-refresh").click();
-
-                // Else, if the status search field is empty
-              } else if ($("#filter-status-term").val() == "") {
-                // Request a refresh of the hashtag filter, which has the side effect of
-                //   refreshing the map
-                $("#hidden-hashtag-filter").click();
-
-                // Else if the hashtag search field is empty
-              } else if ($("#filter-search-term").val() == "") {
-                // Refresh the tweet status filter
-                $("#hidden-status-filter").click();
-
-              }
-            }
-
-//            clearInterval(the_interval);
-          }, 5000);
-
+            console.log("looped")
+          }, 1000);
+//          $("#hidden-filter").click()
         })
       </script>
     </div>
