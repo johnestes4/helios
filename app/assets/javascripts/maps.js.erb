@@ -14,13 +14,15 @@
         "ngResource",
         'uiGmapgoogle-maps'
     ])
-    .controller("maps_controller", function($scope, uiGmapGoogleMapApi, $resource) {
+    .controller("maps_controller", function($scope, uiGmapGoogleMapApi, $resource, EnvConfigurationFactory) {
         var vm = this;
         var heat;
         var Map = $resource("/maps.json", {}, {
             update: {method: "PUT"}
         });
         var firstLoad = true;
+        var googleKey = EnvConfigurationFactory.getMySecretKey()
+        console.log(googleKey);
 
         // vm.data holds all of the tweets in the database
         vm.data = Map.query();
@@ -178,6 +180,7 @@
 
         });
     })
+
     .directive("randomBillMurrayImg", function(){
         return {
             template: '<p>{{tweet.status}}</p>',
@@ -190,7 +193,7 @@
 
     .config(function(uiGmapGoogleMapApiProvider) {
         uiGmapGoogleMapApiProvider.configure({
-            key:'',
+            key: "<%= ENV['google_api_key'] %>",
             v: '3.24', //defaults to latest 3.X anyhow
             libraries: 'weather,geometry,visualization'
         });
