@@ -190,7 +190,7 @@
 
     .config(function(uiGmapGoogleMapApiProvider) {
         uiGmapGoogleMapApiProvider.configure({
-            key: 'AIzaSyBUDVYPfMdmQH8NDwR7eOuWV18J-ckFaQk',
+            key:'',
             v: '3.24', //defaults to latest 3.X anyhow
             libraries: 'weather,geometry,visualization'
         });
