@@ -14,25 +14,7 @@
         "ngResource",
         'uiGmapgoogle-maps'
     ])
-    .controller("maps_controller",['$scope', 'uiGmapGoogleMapApi', '$resource', helloWorld])
-    .directive("randomBillMurrayImg", function(){
-        return {
-            template: '<p>{{tweet.status}}</p>',
-            scope: {
-                tweet:'='
-            },
-            restrict: 'E',
-        }
-    })
-
-    .config(function(uiGmapGoogleMapApiProvider) {
-        uiGmapGoogleMapApiProvider.configure({
-            key: "AIzaSyAolrzoKDQv121tNCT989A4ndkHTVfiqu0",
-            v: '3.24', //defaults to latest 3.X anyhow
-            libraries: 'weather,geometry,visualization'
-        });
-    });
-    function helloWorld($scope, uiGmapGoogleMapApi, $resource) {
+    .controller("maps_controller",['$scope', 'uiGmapGoogleMapApi', '$resource', function helloWorld($scope, uiGmapGoogleMapApi, $resource) {
         var vm = this;
         var heat;
         var Map = $resource("/maps.json", {}, {
@@ -191,7 +173,25 @@
         uiGmapGoogleMapApi.then(function(maps) {
 
         });
-    }
+    }])
+
+    .directive("randomBillMurrayImg", function(){
+        return {
+            template: '<p>{{tweet.status}}</p>',
+            scope: {
+                tweet:'='
+            },
+            restrict: 'E',
+        }
+    })
+
+    .config(function(uiGmapGoogleMapApiProvider) {
+        uiGmapGoogleMapApiProvider.configure({
+            key: "AIzaSyAolrzoKDQv121tNCT989A4ndkHTVfiqu0",
+            v: '3.24', //defaults to latest 3.X anyhow
+            libraries: 'weather,geometry,visualization'
+        });
+    });
 
     function populateFilteredTweets(scope, search_term) {
       search_term = search_term.toLowerCase();
