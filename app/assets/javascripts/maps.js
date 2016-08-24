@@ -186,13 +186,13 @@
         }
     })
 
-    .config(function(uiGmapGoogleMapApiProvider) {
+    .config(["uiGmapGoogleMapApiProvider", function GoogleMapApiProviderFunc(uiGmapGoogleMapApiProvider) {
         uiGmapGoogleMapApiProvider.configure({
             key: "AIzaSyAolrzoKDQv121tNCT989A4ndkHTVfiqu0",
             v: '3.24', //defaults to latest 3.X anyhow
             libraries: 'weather,geometry,visualization'
         });
-    });
+    }]);
 
     function populateFilteredTweets(scope, search_term) {
       search_term = search_term.toLowerCase();
