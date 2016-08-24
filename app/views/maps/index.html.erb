@@ -35,12 +35,17 @@
                     <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="map.showHeat" onCreated="map.heatLayerCallback" id="layerInUse"></ui-gmap-layer>
                 </ui-gmap-google-map>
                 <script type="text/javascript" charset="utf-8">
-                    $(document).ready(function () {
-                        the_interval = setInterval(function () {
-                            $("#hidden-filter").click();
-                            clearInterval(the_interval);
-                        }, 3000);
-                    })
+                  $(document).ready(function () {
+
+                    the_interval = setInterval(function () {
+                      if( $("#filter-search-term").val() == "" && $("#filter-status-term").val() == "") {
+                        $("#hidden-filter").click();
+                        console.log("Updated front end");
+                        console.log("looped")
+                      }}, 1000);
+
+          //          $("#hidden-filter").click()
+                  })
                 </script>
             </div>
         </div>

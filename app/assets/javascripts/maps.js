@@ -35,9 +35,19 @@
             var Map = $resource("/maps.json", {}, {
                 update: {method: "PUT"}
             });
+
+            // Get the new tweets number of previous tweets
+            var previousLength = $scope.allTweets.length
             $scope.allTweets = Map.query();
-            console.log('updated')
-        }, 10000);
+
+//
+
+
+            console.log('updated');
+
+        }, 30000);
+
+
         $scope.allTweets = Map.query();
         // Returns the full array of google maps latlng objects being displayed
 
