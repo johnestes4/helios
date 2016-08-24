@@ -14,7 +14,7 @@
         "ngResource",
         'uiGmapgoogle-maps'
     ])
-    .controller("maps_controller", function($scope, uiGmapGoogleMapApi, $resource) {
+    .controller("maps_controller",['$scope', 'uiGmapGoogleMapApi', '$resource', function ($scope, uiGmapGoogleMapApi, $resource) {
         var vm = this;
         var heat;
         var Map = $resource("/maps.json", {}, {
@@ -70,7 +70,6 @@
             opacity: .6,
 
             updateMom: function(){
-                console.log($scope.allTweets.length)
                 $('.status-one').html($scope.allTweets[$scope.allTweets.length-1].status)
                 $('.status-two').html($scope.allTweets[$scope.allTweets.length-2].status)
                 $('.status-three').html($scope.allTweets[$scope.allTweets.length-3].status)
@@ -80,7 +79,6 @@
 
             heatLayerCallback: function (layer) {
                 populateFilteredTweets($scope, "");
-                console.log("scope.points from outside fn");
                 $scope.layerInUse = layer;
                 //set the heat layers backend data
                 var heatLayer = new createHeatLayer(layer);
@@ -145,7 +143,6 @@
             },
 
             serveHashCount: function () {
-                console.log("Sorting hashtags")
                 var hashtag_dict = countHashtags($scope.allTweets);
                 var hash_count_tuples = [];
                 for (var key in hashtag_dict) hash_count_tuples.push([key, hashtag_dict[key]]);
@@ -168,7 +165,6 @@
                 longitude: position.coords.longitude
             };
             $scope.$apply();
-            console.log($scope.map.center);
         };
 
         function onError(error) {
@@ -178,7 +174,7 @@
         uiGmapGoogleMapApi.then(function(maps) {
 
         });
-    })
+    }])
 
     .directive("randomBillMurrayImg", function(){
         return {
@@ -190,13 +186,13 @@
         }
     })
 
-    .config(function(uiGmapGoogleMapApiProvider) {
+    .config(["uiGmapGoogleMapApiProvider", function GoogleMapApiProviderFunc(uiGmapGoogleMapApiProvider) {
         uiGmapGoogleMapApiProvider.configure({
             key: "AIzaSyAolrzoKDQv121tNCT989A4ndkHTVfiqu0",
             v: '3.24', //defaults to latest 3.X anyhow
             libraries: 'weather,geometry,visualization'
         });
-    });
+    }]);
 
     function populateFilteredTweets(scope, search_term) {
       search_term = search_term.toLowerCase();
@@ -255,7 +251,6 @@
                 var tweet_status = scope.allTweets[i].status.toString();
                 if (tweet_status.indexOf(search_term) != -1) {
                     // Get the coordinates
-                    console.log(scope.allTweets[i]);
                     filteredTweets.push(scope.allTweets[i]);
                 }
             }
