@@ -15,6 +15,8 @@ namespace :twitter do
         # TweetStream::Client.new.filter() do |status|
 
         TweetStream::Client.new.locations([-180,-90,180,90]) do |status|
+            sleep 1
+
             # If the tweet has lat/long attatched to it
             if status.geo.longitude.to_s != ""
               tweet_count += 1
