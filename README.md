@@ -7,9 +7,11 @@ provide our postgresql database with a stream of incoming tweet status, geo coor
 
 The entire stack consists of postgresql for the database, Ruby on Rails for the back end custom api structure, and Angular mounted and integrated with rails for the front-end.
 
+![ScreenShot](Front.jpg)
 ![ScreenShot](helois.jpg)
 
 ## Technologies Used
+Angular Version ~ Angular 1.5.8
 Rails Version ~ Rails 5.0.
 
 The main rake file engine behind the app that grabs the data is based on the two gems that are [available](rubygems.org) at rubygems.org. Their github repositories are listed below. The different Angular resources and postgresql documentation can also be found below:
@@ -22,17 +24,13 @@ The main rake file engine behind the app that grabs the data is based on the two
 * [Heroku](http://www.heroku.com/): hosting this bad boy
 
 ##App approach and planning
-The app developed by [John Estes](https://github.com/johnestes4) [Michael Mahony](https://github.com/michaelmahony) and [Christopher Phillips](https://github.com/chris-A-phillips)
+The app was developed and is currently being maintained and built on by [John Estes](https://github.com/johnestes4) [Michael Mahony](https://github.com/michaelmahony) and [Christopher Phillips](https://github.com/chris-A-phillips)
 
-Before writing any code
-I started with a very basic table model we had covered in class:
+Timeline for product 5 days.
 
-* User table
-* Comments table
+Before writing any code we made sure to whiteboard out the general data flow of our application. We wanted to hammer down the stack we were using to manage this path before starting up.
 
-I then added tables for Tweets and Emojis since I knew that those were data types I wanted to have access to within the app.
-
-Finally, I was able to create a join table that linked the 3 most relevant datatypes together to represent a place where an emoji was stored next to a tweet based on a user's input. This is the emojotweet table.
+One of the bigger organizational features was a Trello Board where we were able to separate out features, branches, issues, and updates into lanes that were titled backlog, In Progress, Tracking, and Complete. We were able to reduce the majority of merge conflicts this way by staying in the specific feature files we had checked out
 
 At its very core I wanted this app to be a simple stream, vote, and re-examine platform. User's view the stream, vote on their preferences with emojis, and then can examine other tweets that other users have also voted on.
 
