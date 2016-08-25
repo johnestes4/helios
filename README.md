@@ -32,9 +32,9 @@ Before writing any code we made sure to whiteboard out the general data flow of 
 
 One of the bigger organizational features was a Trello Board where we were able to separate out features, branches, issues, and updates into lanes that were titled backlog, In Progress, Tracking, and Complete. We were able to reduce the majority of merge conflicts this way by staying in the specific feature files we had checked out.
 
-From there we divided up with one of us taking the Front-End Doc dive for angular maps [John Estes MVP](https://github.com/johnestes4) and Mike and Chris dividing up build tasks for data scraping and api design.
+From there we divided up with one of us taking the Front-End Doc dive for angular maps ([John Estes MVP](https://github.com/johnestes4)). [Mike](https://github.com/michaelmahony) and [Chris](https://github.com/chris-A-phillips) dividing up build tasks for data scraping, api design, and the rails boilerplate for mounting.
 
-We used the weekend the mount John's front end efforts onto our Rails Api and then started working on styling and filter features for the main single page app. An depth discussion of each technology section can be found below.
+We used the weekend to mount John's front end efforts onto our Rails Api and then started working on styling and filter features for the main single page app. An depth discussion of each technology section can be found below.
 ##Back-End-Technology
 
 ##Front-end-Technology
