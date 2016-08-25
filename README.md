@@ -51,7 +51,4 @@ The filtering occurs by loading that array with a filtered set of coordinates an
 
 The map also utilizes HTML5's location services to center the map around the user's current coordinates.
 
-
-## Screencast and Demo
-
 ###Unsolved Problems
