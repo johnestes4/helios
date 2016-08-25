@@ -12,6 +12,7 @@ The entire stack consists of postgresql for the database, Ruby on Rails for the 
 
 ## Technologies Used
 Angular Version ~ Angular 1.5.8
+
 Rails Version ~ Rails 5.0.
 
 The main rake file engine behind the app that grabs the data is based on the two gems that are [available](rubygems.org) at rubygems.org. Their github repositories are listed below. The different Angular resources and postgresql documentation can also be found below:
@@ -36,12 +37,12 @@ From there we divided up with one of us taking the Front-End Doc dive for angula
 
 We used the weekend to mount John's front end efforts onto our Rails Api and then started working on styling and filter features for the main single page app. An depth discussion of each technology section can be found below.
 ##Back-End-Technology
-The Helios backend is written in Ruby on Rails and is implemented as a JSON API. 
+The Helios backend is written in Ruby on Rails and is implemented as a JSON API.
 
-We query Twitter's Tweetstream API, sanitize the results as they come through in real time, and format each tweet for storage in Postgres. 
+We query Twitter's Tweetstream API, sanitize the results as they come through in real time, and format each tweet for storage in Postgres.
 
 Tweets come in with a disparate amount of location data: some are fully populated with coordinates, but the majority have a Place object that defines, among other things, a bounding box that the tweet originated within.
- 
+
 We take the coordinates that define the boundaries of this box and use them to approximate a single point of origin for each tweet.
 
 The Tweet's text, hashtags, and coordinate pair are then saved to our database to be served in response to API calls.
