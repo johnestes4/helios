@@ -7,7 +7,7 @@ provide our postgresql database with a stream of incoming tweet status, geo coor
 
 The entire stack consists of postgresql for the database, Ruby on Rails for the back end custom api structure, and Angular mounted and integrated with rails for the front-end.
 
-![ScreenShot](helios.jpg)
+![ScreenShot](helois.jpg)
 
 ## Technologies Used
 Rails Version ~ Rails 5.0.
