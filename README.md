@@ -24,11 +24,11 @@ The main rake file engine behind the app that grabs the data is based on the two
 * [Heroku](http://www.heroku.com/): hosting this bad boy
 
 ##App approach and planning
-The app was developed and is currently being maintained and built on by [John Estes](https://github.com/johnestes4) [Michael Mahony](https://github.com/michaelmahony) and [Christopher Phillips](https://github.com/chris-A-phillips)
+The app was developed and is currently being maintained and built on by [John Estes](https://github.com/johnestes4), [Michael Mahony](https://github.com/michaelmahony), and [Christopher Phillips](https://github.com/chris-A-phillips)
 
 Timeline for product 5 days.
 
-Before writing any code we made sure to whiteboard out the general data flow of our application. We wanted to hammer down the stack we were using to manage this path before starting up.
+Before writing any code we made sure to whiteboard out the general data flow of our application. We wanted to hammer down the stack we were using to manage this path before starting.
 
 One of the bigger organizational features was a Trello Board where we were able to separate out features, branches, issues, and updates into lanes that were titled backlog, In Progress, Tracking, and Complete. We were able to reduce the majority of merge conflicts this way by staying in the specific feature files we had checked out
 
