@@ -36,6 +36,15 @@ From there we divided up with one of us taking the Front-End Doc dive for angula
 
 We used the weekend to mount John's front end efforts onto our Rails Api and then started working on styling and filter features for the main single page app. An depth discussion of each technology section can be found below.
 ##Back-End-Technology
+The Helios backend is written in Ruby on Rails and is implemented as a JSON API. 
+
+We query Twitter's Tweetstream API, sanitize the results as they come through in real time, and format each tweet for storage in Postgres. 
+
+Tweets come in with a disparate amount of location data: some are fully populated with coordinates, but the majority have a Place object that defines, among other things, a bounding box that the tweet originated within.
+ 
+We take the coordinates that define the boundaries of this box and use them to approximate a single point of origin for each tweet.
+
+The Tweet's text, hashtags, and coordinate pair are then saved to our database to be served in response to API calls.
 
 ##Front-end-Technology
 The map runs off a custom set of Angular directives used to port Google's Javascript API into Angular. Coordinates then are pulled from the twitter stream and loaded into an array. This array is then plugged into the Maps API in order to generate a base layer of heatmapping.
@@ -43,6 +52,7 @@ The map runs off a custom set of Angular directives used to port Google's Javasc
 The filtering occurs by loading that array with a filtered set of coordinates and redrawing the heatmap with every character the user enters into the text fields.
 
 The map also utilizes HTML5's location services to center the map around the user's current coordinates.
+
 
 ## Screencast and Demo
 
