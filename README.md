@@ -37,8 +37,18 @@ Finally, I was able to create a join table that linked the 3 most relevant datat
 At its very core I wanted this app to be a simple stream, vote, and re-examine platform. User's view the stream, vote on their preferences with emojis, and then can examine other tweets that other users have also voted on.
 
 ##Back-End-Technology
+The Helios backend is written in Ruby on Rails and is implemented as a JSON API. 
+
+We query Twitter's Tweetstream API, sanitize the results as they come through in real time, and format each tweet for storage in Postgres. 
+
+Tweets come in with a disparate amount of location data: some are fully populated with coordinates, but the majority have a Place object that defines, among other things, a bounding box that the tweet originated within.
+ 
+We take the coordinates that define the boundaries of this box and use them to approximate a single point of origin for each tweet.
+
+The Tweet's text, hashtags, and coordinate pair are then saved to our database to be served in response to API calls.
 
 ##Front-end-Technology
+
 
 ## Screencast and Demo
 
