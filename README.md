@@ -37,6 +37,11 @@ At its very core I wanted this app to be a simple stream, vote, and re-examine p
 ##Back-End-Technology
 
 ##Front-end-Technology
+The map runs off a custom set of Angular directives used to port Google's Javascript API into Angular. Coordinates then are pulled from the twitter stream and loaded into an array. This array is then plugged into the Maps API in order to generate a base layer of heatmapping.
+
+The filtering occurs by loading that array with a filtered set of coordinates and redrawing the heatmap with every character the user enters into the text fields.
+
+The map also utilizes HTML5's location services to center the map around the user's current coordinates.
 
 ## Screencast and Demo
 
