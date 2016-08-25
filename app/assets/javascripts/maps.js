@@ -43,7 +43,6 @@
 //
 
 
-            console.log('updated');
 
         }, 30000);
 
@@ -138,7 +137,6 @@
             },
 
             processFilter: function() {
-              console.log("Process filter called")
                 var search_term = $("#filter-search-term").val();
                 populateFilteredTweets($scope, search_term);
                 var layer = document.getElementById("layerInUse");
