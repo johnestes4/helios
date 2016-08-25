@@ -24,17 +24,17 @@ The main rake file engine behind the app that grabs the data is based on the two
 * [Heroku](http://www.heroku.com/): hosting this bad boy
 
 ##App approach and planning
-The app was developed and is currently being maintained and built on by [John Estes](https://github.com/johnestes4) [Michael Mahony](https://github.com/michaelmahony) and [Christopher Phillips](https://github.com/chris-A-phillips)
+The app was developed and is currently being maintained and built on by [John Estes](https://github.com/johnestes4), [Michael Mahony](https://github.com/michaelmahony), and [Christopher Phillips](https://github.com/chris-A-phillips)
 
 Timeline for product 5 days.
 
-Before writing any code we made sure to whiteboard out the general data flow of our application. We wanted to hammer down the stack we were using to manage this path before starting up.
+Before writing any code we made sure to whiteboard out the general data flow of our application. We wanted to hammer down the stack we were using to manage this path before starting.
 
 One of the bigger organizational features was a Trello Board where we were able to separate out features, branches, issues, and updates into lanes that were titled backlog, In Progress, Tracking, and Complete. We were able to reduce the majority of merge conflicts this way by staying in the specific feature files we had checked out.
 
-From there we divided up with one of us taking the Front-End Doc dive for angular maps [John Estes MVP](https://github.com/johnestes4) and Mike and Chris dividing up build tasks for data scraping and api design.
+From there we divided up with one of us taking the Front-End Doc dive for angular maps ([John Estes MVP](https://github.com/johnestes4)). [Mike](https://github.com/michaelmahony) and [Chris](https://github.com/chris-A-phillips) dividing up build tasks for data scraping, api design, and the rails boilerplate for mounting.
 
-We used the weekend the mount John's front end efforts onto our Rails Api and then started working on styling and filter features for the main single page app. An depth discussion of each technology section can be found below.
+We used the weekend to mount John's front end efforts onto our Rails Api and then started working on styling and filter features for the main single page app. An depth discussion of each technology section can be found below.
 ##Back-End-Technology
 The Helios backend is written in Ruby on Rails and is implemented as a JSON API. 
 
