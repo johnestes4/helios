@@ -51,11 +51,11 @@
         </div>
         <div class='second-span'>
             <h3 class='tweet-headline' style="text-align:center;">Tweet Stream</h3>
-            <p class='tweet-headline' style="text-align:center;">Below is a sample of the live status updates for our data. These get refreshed everytime the application makes a request to the maps.json data. Click Update Tweets on the map to refresh them.</p>
+            <p class='tweet-headline' style="text-align:center;">Below is a sample of the live status updates for our data. These get refreshed everytime the application makes a request to the maps.json data.</p>
         </div>
         <div class='col-md-8 col-md-offset-2 tweet-box'>
             <div class='well status-box'>
-                <div ng-repeat='tweet in allTweets | orderBy:"-id" | limitTo:5  '>
+                <div ng-repeat='tweet in allTweets | orderBy:"-id" | limitTo:7  '>
                     <random-bill-murray-img tweet='tweet'/>
                 </div>
             </div>
