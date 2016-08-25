@@ -11,9 +11,6 @@ The entire stack consists of postgresql for the database, Ruby on Rails for the 
 ![ScreenShot](helois.jpg)
 
 ## Technologies Used
-Angular Version ~ Angular 1.5.8
-
-Rails Version ~ Rails 5.0.
 
 The main rake file engine behind the app that grabs the data is based on the two gems that are [available](rubygems.org) at rubygems.org. Their github repositories are listed below. The different Angular resources and postgresql documentation can also be found below:
 * [Angular](https://angularjs.org/) ~ Angular 1.5.8
