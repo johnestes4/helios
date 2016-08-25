@@ -33,6 +33,7 @@ One of the bigger organizational features was a Trello Board where we were able 
 From there we divided up with one of us taking the Front-End Doc dive for angular maps ([John Estes MVP](https://github.com/johnestes4)). [Mike](https://github.com/michaelmahony) and [Chris](https://github.com/chris-A-phillips) dividing up build tasks for data scraping, api design, and the rails boilerplate for mounting.
 
 We used the weekend to mount John's front end efforts onto our Rails Api and then started working on styling and filter features for the main single page app. An depth discussion of each technology section can be found below.
+![ScreenShot](trello.jpg)
 ##Back-End-Technology
 The Helios backend is written in Ruby on Rails and is implemented as a JSON API.
 
@@ -50,7 +51,7 @@ The map runs off a custom set of Angular directives used to port Google's Javasc
 The filtering occurs by loading that array with a filtered set of coordinates and redrawing the heatmap with every character the user enters into the text fields.
 
 The map also utilizes HTML5's location services to center the map around the user's current coordinates.
-
+g
 ###Unsolved Problems
 * The heatlayer flashes briefly upon the automatic upload of new tweet data. 
 We have managed to determine that this flash lasts the duration of the interval between population of new data in our controller and the refresh call on the front end.
