@@ -14,7 +14,7 @@
  *= require_layout
  */
  .parallax{
-     background: url("http://digitalresult.com/wp-content/uploads/2015/09/earth-desktop-wallpapers-8.jpeg");
+     background: url("earth.jpeg");
      background-attachment: fixed;
      background-position: center;
      background-repeat: no-repeat;
@@ -51,7 +51,7 @@
 }
 
 .third-span{
-    background: url("https://upload.wikimedia.org/wikipedia/commons/0/08/Embalse_de_la_Vi%C3%B1uela,_M%C3%A1laga,_view_from_a_plane,_Andalucia,_Spain.jpg");
+    background: url("land.jpg");
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -71,7 +71,7 @@
 
 .fifth-span{
     text-align: center;
-    background: url("https://static.pexels.com/photos/30638/pexels-photo.jpg");
+    background: url("ocean.jpg");
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
