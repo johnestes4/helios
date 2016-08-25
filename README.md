@@ -57,3 +57,13 @@ The map also utilizes HTML5's location services to center the map around the use
 ## Screencast and Demo
 
 ###Unsolved Problems
+* The heatlayer flashes briefly upon the automatic upload of new tweet data. 
+We have managed to determine that this flash lasts the duration of the interval between population of new data in our controller and the refresh call on the front end.
+The intuitive next step is to have the population of new data in the controller trigger the map's heat layer to refresh automatically.
+
+* An unresolved feature is to allow the user to create snapshots of the map and heat layer for download and to serve for other users to view.
+
+* Automatic purge of database needs to be implemented to prevent excess data being held and served.
+ 
+* General refactor
+  
