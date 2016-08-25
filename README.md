@@ -1,4 +1,4 @@
-# README Rio-De-Emoji
+# README Helios
 
 Helios is a single page application that displays a heat-map layer over a traditional google map. With the use of custom directives, angular filters, and directives provided by the angular google maps team, users are able to interact with different menu filters to display a new heatmap based on hashtag or status content.
 
