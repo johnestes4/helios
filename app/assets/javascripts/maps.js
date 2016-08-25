@@ -40,7 +40,7 @@
             var previousLength = $scope.allTweets.length
             $scope.allTweets = Map.query();
 
-//
+
 
 
 
@@ -274,8 +274,6 @@
             scope.points.push(point_obj);
         }
     }
-
-
 
     function countHashtags(all_tweets) {
         var counts = {}
