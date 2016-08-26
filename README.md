@@ -1,5 +1,11 @@
 # README Helios
 
+Created By
+
+[John Estes](https://github.com/johnestes4)
+[Michael Mahony](https://github.com/michaelmahony)
+[Christopher Phillips](https://github.com/chris-A-phillips)
+
 Helios is a single page application that displays a heat-map layer over a traditional google map. With the use of custom directives, angular filters, and directives provided by the angular google maps team, users are able to interact with different menu filters to display a new heatmap based on hashtag or status content.
 
 The app uses a simple eventmachine/twitterstream gem combination to
@@ -53,13 +59,12 @@ The filtering occurs by loading that array with a filtered set of coordinates an
 The map also utilizes HTML5's location services to center the map around the user's current coordinates.
 g
 ###Unsolved Problems
-* The heatlayer flashes briefly upon the automatic upload of new tweet data. 
+* The heatlayer flashes briefly upon the automatic upload of new tweet data.
 We have managed to determine that this flash lasts the duration of the interval between population of new data in our controller and the refresh call on the front end.
 The intuitive next step is to have the population of new data in the controller trigger the map's heat layer to refresh automatically.
 
 * An unresolved feature is to allow the user to create snapshots of the map and heat layer for download and to serve for other users to view.
 
 * Automatic purge of database needs to be implemented to prevent excess data being held and served.
- 
+
 * General refactor
-  
