@@ -74,7 +74,7 @@
                 longitude: 8.2245
             },
             showHeat: true,
-            zoom: 2,
+            zoom: 1,
             radius: 10,
             opacity: .6,
 
