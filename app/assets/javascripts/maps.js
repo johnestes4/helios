@@ -70,11 +70,11 @@
         // Set up the google map
         $scope.map = {
             center: {
-                latitude: 40.907240,
-                longitude: -75.036591
+                latitude: 39.3999,
+                longitude: 8.2245
             },
             showHeat: true,
-            zoom: 10,
+            zoom: 2,
             radius: 10,
             opacity: .6,
 
