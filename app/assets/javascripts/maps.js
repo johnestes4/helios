@@ -40,10 +40,9 @@
             var previousLength = $scope.allTweets.length
             $scope.allTweets = Map.query();
 
-//
 
 
-            console.log('updated');
+
 
         }, 30000);
 
@@ -138,7 +137,6 @@
             },
 
             processFilter: function() {
-              console.log("Process filter called")
                 var search_term = $("#filter-search-term").val();
                 populateFilteredTweets($scope, search_term);
                 var layer = document.getElementById("layerInUse");
@@ -276,8 +274,6 @@
             scope.points.push(point_obj);
         }
     }
-
-
 
     function countHashtags(all_tweets) {
         var counts = {}

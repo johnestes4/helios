@@ -14,7 +14,7 @@
  *= require_layout
  */
  .parallax{
-     background: url("http://digitalresult.com/wp-content/uploads/2015/09/earth-desktop-wallpapers-8.jpeg");
+     background: url("earth.jpeg");
      background-attachment: fixed;
      background-position: center;
      background-repeat: no-repeat;
@@ -47,11 +47,11 @@
     background-color:white;
     text-align:center;
     padding:30px 80px;
-    text-align: justify;
+    text-align: center;
 }
 
 .third-span{
-    background: url("https://upload.wikimedia.org/wikipedia/commons/0/08/Embalse_de_la_Vi%C3%B1uela,_M%C3%A1laga,_view_from_a_plane,_Andalucia,_Spain.jpg");
+    background: url("land.jpg");
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -71,6 +71,12 @@
 
 .fifth-span{
     text-align: center;
+    background: url("ocean.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 300px;
 }
 
 .navbar {
@@ -89,7 +95,6 @@
     margin-top: 1em;
 }
 .headline{
-    padding-top: g20em;
     margin-top: 0 !important;
     text-align: center;
     font-size: 60px;
@@ -158,7 +163,8 @@
 }
 
 .status-box{
-    height: 179px;
+    height: 260px;
+
 }
 
 .tweet-headline{
@@ -172,4 +178,30 @@
 
 .dev-headline{
     color: #777;
+    text-align: center;
+    margin-bottom: 1.5em;
+}
+.log-headline{
+    text-align: center;
+    color: white;
+    margin-top: 0 !important;
+}
+
+.dev {
+    margin-bottom: 30px;
+    height: 300px;
+}
+.dev-list{
+    margin-top: 2em;
+}
+
+.hr-line{
+    color: black;
+}
+
+.bottom-headline{
+
+}
+a{
+    color: white !important;
 }
