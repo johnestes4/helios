@@ -2,10 +2,10 @@ namespace :twitter do
     desc "Opens Tweet Stream connection and scapes to DB"
     task scrape: :environment do
         TweetStream.configure do |config|
-            config.consumer_key       = ''
-            config.consumer_secret    = ''
-            config.oauth_token        = ''
-            config.oauth_token_secret = ''
+            config.consumer_key       = 'r4HLs80SqfP89RBHDTy6nXPyH'
+            config.consumer_secret    = 'Nxi7Ug0zK9WXsjDBnCREZKIw0SwC6qNtN2yhY9ZFv1WpgifBpT'
+            config.oauth_token        = '375796206-snaaskLlUfipHuyt1VsM552tJla7HD9JVZfG7MeG'
+            config.oauth_token_secret = 'Xr5g9gMjBAffqhOVuukIefPeLojGO6dU7sRitQrQ5ueGn'
             config.auth_method        = :oauth
         end
         puts 'I authenticated'
